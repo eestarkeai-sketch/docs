@@ -77,28 +77,35 @@ font-family:var(--sans);font-size:15px;line-height:1.55;color:#5A2A1C;}
   <h1>Before you begin</h1>
 
   <div class="warn-box">
-    <strong>This has to be done in one sitting.</strong>
-    You have twenty-five minutes from the moment you press Begin, and the clock keeps running whether this page is open or not. There is no pause and no way to resume later. Do not start until you have a clear half hour and will not be interrupted.
+    <strong>Give yourself one clear half hour.</strong>
+    This runs in a single sitting. You have twenty-five minutes from the moment you press Begin, and the clock keeps running whether this page is open or not, so it is worth starting when you know you will not be interrupted. Come back and press Begin when you are ready.
   </div>
 
   <div class="box">
-    <strong>This is not a graded test.</strong>
-    There is no pass mark, no score to beat, and nothing here you can fail. It is a profile: it tells Ethan Starke what you are strong at and where you would need support. Answer honestly rather than strategically. A candid answer is more use to you than a polished one.
+    <strong>There is nothing to pass or fail here.</strong>
+    No pass mark, no score to beat. This is a profile: it shows Ethan Starke what you are strong at and where you would want support early on. Answer honestly rather than strategically. A candid answer is more use to you than a polished one, and it is what gets read.
   </div>
 
   <div class="box">
     <strong>How it works</strong>
     <ul>
       <li>A countdown sits at the top of the screen throughout, so you always know where you stand.</li>
-      <li>Six short sections. You move forward only; you cannot return to a section.</li>
-      <li>You are identified by your code alone. Do not put your name anywhere.</li>
-      <li>You may take it more than once. The questions change between attempts.</li>
-      <li>You will not be shown a result. Your answers go to Ethan Starke's office and you will hear from the office directly.</li>
+      <li>Six short sections, taken in order. Each one moves forward to the next.</li>
       <li>Two sections ask you to write. Write as you would to a real executive.</li>
+      <li>You are welcome to take it again. The questions change between attempts, and every attempt is read.</li>
+      <li>No result is shown on screen. Your answers go to Ethan Starke's office and you will hear from the office directly.</li>
+      <li>Do not spend time hunting for perfect answers. What is being read is how you think and how you write.</li>
     </ul>
   </div>
-  <p><label for="code" style="font-family:var(--sans);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);">Your code</label></p>
+  <p><label for="who" style="font-family:var(--sans);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);">Your full name</label></p>
+  <input type="text" id="who" autocomplete="name" spellcheck="false" placeholder="">
+
+  <p><label for="whomail" style="font-family:var(--sans);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);">The email address you applied with</label></p>
+  <input type="email" id="whomail" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="">
+
+  <p><label for="code" style="font-family:var(--sans);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);">Access code</label></p>
   <input type="text" id="code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="">
+  <p style="font-family:var(--sans);font-size:14px;color:var(--slate);margin-top:-4px;">From your invitation. Capitals do not matter.</p>
   <div id="gate-err" class="err"></div>
   <button id="begin">Begin</button>
 </section>
@@ -113,8 +120,8 @@ font-family:var(--sans);font-size:15px;line-height:1.55;color:#5A2A1C;}
 <section id="s-done" class="hid">
   <div class="sec">Received</div>
   <h1>Thank you.</h1>
-  <p class="lead">Your assessment has reached Ethan Starke's office. You will hear from the office directly.</p>
-  <p class="lead">Nothing here was graded and no score is shown, by design. If you would like another go on a different set of questions, your code still works.</p>
+  <p class="lead">That has reached Ethan Starke's office, and you will hear from the office directly.</p>
+  <p class="lead">Nothing here was graded, and no score is shown by design. If you would like another go on a different set of questions, the same link and code will take you through again.</p>
   <p class="lead">You may close this page.</p>
 </section>
 
@@ -144,9 +151,13 @@ setInterval(tick, 1000);
 
 $('begin').onclick = function(){
   var code = $('code').value.trim();
-  if(!code){ $('gate-err').textContent = 'Enter your code.'; return; }
+  var who  = $('who').value.trim();
+  var mail = $('whomail').value.trim();
+  if(!who){ $('gate-err').textContent = 'Please add your name.'; return; }
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){ $('gate-err').textContent = 'Please add the email address you applied with.'; return; }
+  if(!code){ $('gate-err').textContent = 'Please add the access code from your invitation.'; return; }
   this.disabled = true; this.textContent = 'Checking';
-  post({ action:'start', code:code }, function(r){
+  post({ action:'start', code:code, name:who, email:mail }, function(r){
     if(!r || !r.ok){ $('gate-err').textContent = (r && r.error) || 'Could not start. Try again.';
       $('begin').disabled = false; $('begin').textContent = 'Begin'; return; }
     S.token = r.token; S.data = r; S.total = r.limit; S.deadline = Date.now() + r.limit*1000;
