@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex,notranslate">
+<meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="bingbot" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<title>The Practice, Explained</title>
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+@font-face{font-family:'FrauncesDisp';src:url(fonts/fraunces-disp.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap;}
+@font-face{font-family:'Fraunces';src:url(fonts/fraunces-var.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap;}
+@font-face{font-family:'Fraunces';src:url(fonts/fraunces-var-italic.woff2) format('woff2');font-weight:100 900;font-style:italic;font-display:swap;}
+@font-face{font-family:'Archivo';src:url(fonts/archivo-var.woff2) format('woff2');font-weight:100 900;font-style:normal;font-display:swap;}
+:root{--nblk:#0A1220;--navy:#112038;--creamhi:#FBF6EA;--cream:#F1E9D6;--gold:#C7A24E;--goldink:#6F5624;
+--paper:#FAF7F0;--ink:#20242B;--slate:#5C6472;--rule:#E0D8C6;
+--serif:'Fraunces',Georgia,serif;--disp:'FrauncesDisp','Fraunces',Georgia,serif;--sans:'Archivo','Segoe UI',Arial,sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.65;}
+header.bar{background:var(--nblk);color:var(--cream);padding:22px 0;}
+header.bar .in{max-width:820px;margin:0 auto;padding:0 28px;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;}
+header.bar a.mark{color:var(--cream);text-decoration:none;font-family:var(--sans);font-weight:600;letter-spacing:.18em;font-size:12px;text-transform:uppercase;}
+header.bar .tag{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);}
+main{max-width:820px;margin:0 auto;padding:52px 28px 96px;}
+.meta{font-family:var(--sans);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-bottom:10px;}
+h1{font-family:var(--disp);font-weight:500;font-size:clamp(30px,5.4vw,46px);line-height:1.1;letter-spacing:-.01em;margin:0 0 22px;}
+h1+p{font-size:18px;color:var(--slate);}
+h2{font-family:var(--disp);font-weight:500;font-size:clamp(22px,3.4vw,30px);line-height:1.2;margin:52px 0 14px;padding-top:26px;border-top:1px solid var(--rule);}
+h3{font-family:var(--serif);font-weight:600;font-size:19px;margin:30px 0 8px;}
+p,ul,ol,table,blockquote{margin:0 0 16px;}
+ul,ol{padding-left:22px;}
+li{margin-bottom:7px;}
+strong{font-weight:650;color:#141821;}
+em{font-style:italic;}
+a{color:var(--goldink);text-decoration:underline;text-underline-offset:2px;}
+hr{border:0;border-top:1px solid var(--rule);margin:38px 0;}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:#EFEADF;padding:1px 5px;border-radius:3px;}
+.tablewrap{overflow-x:auto;margin:0 0 20px;-webkit-overflow-scrolling:touch;}
+table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:14px;min-width:520px;}
+th{text-align:left;font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);
+border-bottom:1.5px solid var(--ink);padding:9px 12px 9px 0;}
+td{border-bottom:1px solid var(--rule);padding:10px 12px 10px 0;vertical-align:top;}
+blockquote{border-left:2px solid var(--gold);padding-left:16px;color:var(--slate);font-style:italic;}
+footer{max-width:820px;margin:0 auto;padding:0 28px 70px;font-family:var(--sans);font-size:12px;color:var(--slate);}
+footer .rule{border-top:1px solid var(--rule);padding-top:18px;}
+.conf{background:#FDF6E3;border:1px solid var(--gold);border-radius:2px;padding:14px 18px;margin:0 0 30px;
+font-family:var(--sans);font-size:13px;line-height:1.55;color:var(--goldink);}
+.idx{list-style:none;padding:0;}
+.idx li{border-top:1px solid var(--rule);padding:22px 0;margin:0;}
+.idx a{font-family:var(--disp);font-size:24px;text-decoration:none;color:var(--ink);}
+.idx a:hover{color:var(--goldink);}
+.idx .d{font-family:var(--sans);font-size:13.5px;color:var(--slate);margin-top:6px;}
+@media(max-width:600px){body{font-size:16px;}main{padding:36px 20px 72px;}h2{margin-top:40px;}}
+@media print{header.bar{background:none;color:#000;border-bottom:1px solid #000;}body{background:#fff;}}
+</style>
+</head><body>
+<header class="bar"><div class="in"><a class="mark" href="index.html">Ethan Starke</a><span class="tag">Training Manual</span></div></header>
+<main><div class="conf">Internal training document. Ethan Starke LLC. Do not forward outside the practice.</div><h1>The Practice, Explained</h1>
+<p><strong>A training manual for anyone who will sell Ethan Starke's advisory work.</strong></p>
+<p>Version 1.0, RATIFIED. Approved by Ethan Starke on 31 August 2026. Prepared by Joshua Sterling, Chief Venture Officer, Venture Development. Every factual line traces to a sealed document or a ruling; where this manual reaches beyond the record it says so in the open. Amended only on Ethan Starke's further ruling.</p>
+<hr />
+<h2>How to use this</h2>
+<p>Read it in order the first time. It is built to take someone who has never heard of Ethan Starke and leave them able to hold a serious conversation with a chief executive about his work.</p>
+<p>It is not a script. If you memorize phrases and deploy them, you will sound like someone running a technique, and this buyer hears that instantly. Learn the substance. The words will be yours.</p>
+<p>You carry a deal from first contact to signature. Parts 1 to 6 are what you need to know. Parts 7 and 8 are what you sell and to whom. Parts 9 to 13 are how you run it.</p>
+<p>Three rules before anything else:</p>
+<ol>
+<li><strong>You own the deal. Ethan owns the diagnosis.</strong> You qualify, scope, quote, propose and close. What you do not do is tell a buyer what is wrong with their organization; that is the work itself, and it is what they are paying for.</li>
+<li><strong>When you do not know, say you do not know.</strong> Then find out. A representative who guesses about a confidential practice is a liability, not an asset.</li>
+<li><strong>You may never invent a fact about Ethan, a client, a result or a price.</strong> Part 6 is the proof you may use, Part 7 is the price list, Part 9 is the short list of things you may never say. If it is not in one of those, ask before you say it.</li>
+</ol>
+<hr />
+<h1>Part 1. Who he is</h1>
+<p><strong>Q. In one sentence, who is Ethan Starke?</strong></p>
+<p>An Executive Advisor who works with leadership teams, executive committees, chambers, universities, public agencies and founders on the private side of leadership: judgment, identity and alignment under pressure.</p>
+<p>Use that title. Executive Advisor, not educator, not coach, not speaker. It is the description Ethan has ruled correct and it is also the one that carries the price.</p>
+<p><strong>Q. What does "the private side of leadership" mean?</strong></p>
+<p>The decisions a leader makes that nobody watches them make. Not the strategy on the slide, but the judgment call at 6pm with incomplete information. Not the org chart, but whether the executive team can actually tell each other the truth. That is the territory.</p>
+<p>Use the phrase as buyer language. Do not use it as if it were the name of a method. It is how the work is described, not what it is called.</p>
+<p><strong>Q. What did he do before this?</strong></p>
+<p>Two decades in the CEO seat, companies built across three continents, and a defense-robotics venture founded and exited.</p>
+<p>This matters more than any credential and you should understand why. He is not a consultant who studied leadership. He is an operator who made the decisions he now teaches. When an executive asks "has this person ever actually run anything", the answer is yes, for twenty years, on three continents. That answer is the difference between being taken seriously in a boardroom and not.</p>
+<p><strong>Q. What are his formal credentials?</strong></p>
+<p>ICF Associate Certified Coach. Advanced Certified Personal and Executive Coach, College of Executive Coaching. MS in Management, University of Illinois. Ethan Starke LLC is a California-certified small business, insured.</p>
+<p>The California certification matters for one specific audience: public agencies and universities, where it makes him direct-award eligible. That is a procurement fact, not a marketing line. Learn where it belongs.</p>
+<p><strong>Q. Has he written anything?</strong></p>
+<p>Yes. <em>The Stoic Entrepreneur</em> and <em>The Science of Letting Go</em> are in print. <em>The Aligned Organization</em> is coming in 2027.</p>
+<p><strong>Q. What don't I know about him from this manual?</strong></p>
+<p>His own account of his path: which companies, which continents, what the defense-robotics venture was, what he learned in the seat that made him leave it. That story is his to tell and it is not in the record I was given. Ask him for it. Until he gives it, do not fill the gap with your own version of it, and do not embellish the three facts above into a narrative he has not approved.</p>
+<hr />
+<h1>Part 2. What the work actually is</h1>
+<p><strong>Q. What is he selling?</strong></p>
+<p>Not talks. Not training. He is selling a working session: a room in which senior people bring real decisions they are currently facing, work them with a structured method, and leave with one of them clearer and with commitments they wrote themselves.</p>
+<p><strong>Q. Say that again in a way I will remember.</strong></p>
+<p>Every engagement runs as a working session. Participants bring live decisions, test them in structured dialogue, and leave with commitments in their own words. No motivational programming. No content for its own sake. No slides where thinking should be.</p>
+<p><strong>Q. So it is not a keynote?</strong></p>
+<p>A keynote is one of eight formats and it is the entry point, not the product. Even the keynote is built for reflection rather than applause. But if a buyer's whole idea of Ethan is "a good speaker", you have not finished the conversation.</p>
+<p><strong>Q. What is the single most common mistake a new representative makes?</strong></p>
+<p>Selling the format instead of the outcome. "Would you like a ninety-minute working session?" is a bad question. "What decision is your executive team stuck on?" is the beginning of a good one. The format is the answer to a problem, and you cannot recommend one until you know the problem.</p>
+<p><strong>Q. Why is confidentiality mentioned so often?</strong></p>
+<p>Because it is part of the service, not a legal footnote. Confidentiality agreements are signed as standard. What happens in the room stays there. That is why you will never see a client story or a testimonial in his materials, and why you will never tell one.</p>
+<p>Understand the logic: the people in these rooms are senior enough that being quoted would cost them something. The practice's willingness to be publicly quieter than it could be is the reason those people speak freely in the room. Discretion is the product working.</p>
+<hr />
+<h1>Part 3. Who it is for</h1>
+<p><strong>Q. Who buys this?</strong></p>
+<p>Leadership teams and executive committees. Chambers of commerce and associations. Universities and executive education arms. Public agencies. Founder communities and investor groups. Corporations, law firms and professional services firms. Nonprofits.</p>
+<p><strong>Q. Who is the actual buyer inside those?</strong></p>
+<p>It varies and you must find out rather than assume. It may be the chief executive, the head of HR or people, a chief of staff, a chamber's programming director, a university's executive education director, or a public agency's leadership development owner. What matters is finding the person who can say yes and commit a budget, and knowing whether the person you are talking to is that person, an advocate for you, or a gatekeeper.</p>
+<p><strong>Q. What signals a real opportunity rather than a polite conversation?</strong></p>
+<p>Four things, and you want evidence of all four before you take up Ethan's time:</p>
+<ol>
+<li>There is a real problem, described in the buyer's own words, that they are already living with.</li>
+<li>Somebody senior sponsors it. Development nobody senior owns does not happen.</li>
+<li>Attendance would be voluntary and the room would be genuinely senior.</li>
+<li>There is commercial scale: they can actually fund an engagement.</li>
+</ol>
+<p><strong>Q. What if only two of the four are there?</strong></p>
+<p>Then it is a relationship, not an opportunity, and you record it as one. Relationships are not failures. This practice is built on them.</p>
+<hr />
+<h1>Part 4. The six territories</h1>
+<p>Six territories of executive work. Every session is reusable intellectual property and is delivered as a working session, never as a lecture. Learn the situation line for each one, because that is what a buyer recognizes themselves in.</p>
+<p><strong>1. Leadership Under Pressure and Decision Quality.</strong>
+<em>The plan exists. The pressure is real. The decisions in between are where the year is won or lost.</em>
+Sessions include: Decisions Under Uncertainty (presented as "Leading Under Pressure: The Decisions No One Sees You Make"); Executive Judgment; Strategic Clarity; Executive Attention.</p>
+<p><strong>2. Executive Identity and Authority.</strong>
+<em>Performance problems that keep returning are usually identity patterns wearing a new disguise.</em>
+Sessions include: Identity Is the Operating System; Leadership Shadows (presented as "If a Leader Falls, Who Notices?"); Responsibility Without Collapse; The Executive Mirror; Executive Energy and Sustainable Performance.</p>
+<p><strong>3. Organizational Alignment and Culture.</strong>
+<em>Aligned on paper, misaligned in the room: conflicting assumptions, incentives and priorities doing quiet damage.</em>
+Sessions include: The Alignment Myth; Anatomy of Misalignment; Execution Is an Alignment Outcome; Culture as Organizational Evidence; Alignment Rhythms; Organizational Identity; Becoming an Aligned Organization.</p>
+<p><strong>4. Executive Teams, Trust and Accountability.</strong>
+<em>Five capable executives can share a table and still not be a team.</em>
+Sessions include: Executive Team Effectiveness; Trust as Infrastructure; Accountability That Builds Adults; Psychological Safety Without Lowering Standards; Productive Conflict; Conversations That Create Reality.</p>
+<p><strong>5. Leaders and Founders in Transition.</strong>
+<em>The company grew. The complexity grew faster. The leader's operating model has to catch up.</em>
+Sessions include: Scaling Yourself Before Scaling the Company (presented in founder rooms as "Clarity Before Scale"); From Operator to Architect; Reinvention Without Losing Yourself; Founder Psychology; The Founder Bottleneck.</p>
+<p><strong>6. Change, Resilience and Institutional Leadership.</strong>
+<em>People do not experience change as a plan. They experience it as a challenge to meaning, competence and belonging.</em>
+Sessions include: Leading Through Change; Organizational Resilience; Building Adaptive Organizations; The Long Game; Institutional Stewardship; Legacy and Continuity.</p>
+<p><strong>Q. Do I have to memorize every session title?</strong></p>
+<p>No. Memorize the six situation lines. Those are what a buyer hears themselves in. The session titles are on the gateway and in the printable summary sheet; look them up in front of the buyer if you need to, which reads as care rather than ignorance.</p>
+<p><strong>Q. What if the buyer's problem does not fit a territory?</strong></p>
+<p>Say so and route it to a conversation. The territories are how the work is organized, not the limit of what Ethan can address. Custom organizational problems are a real pathway, not an exception.</p>
+<hr />
+<h1>Part 5. The eight formats</h1>
+<p>The ladder. Same method in every one: real decisions, worked live.</p>
+<p><strong>Bring in perspective</strong></p>
+<ul>
+<li><strong>Executive Keynote.</strong> 30 or 60 minutes. One to three ideas built for reflection, not applause. Any room size, in person, virtual or hybrid. Leaders leave with a shared mental model they can use the next morning.</li>
+<li><strong>Executive Conversation.</strong> 30 to 60 minutes. A moderated conversation, fireside or book conversation, for conferences, executive dinners and board meetings.</li>
+</ul>
+<p><strong>Align on a decision</strong></p>
+<ul>
+<li><strong>Executive Roundtable (the Executive Briefing).</strong> 60 to 90 minutes. Senior, off the record, one theme, facilitated peer discussion. 8 to 25 seats.</li>
+<li><strong>Executive Working Session.</strong> The signature format. 90 to 120 minutes. Participants bring live decisions and work them with the method: one primary exercise, structured dialogue, written commitments. Boardroom, cabaret or U-shape, 12 to 40.</li>
+</ul>
+<p><strong>Build capability</strong></p>
+<ul>
+<li><strong>Leadership Laboratory or Workshop.</strong> Half day or full day of applied learning cycles. Practice, not theory. 12 to 40. Also delivered for managers and staff as a custom-built program.</li>
+<li><strong>Leadership Series.</strong> Three executive working sessions over weeks or months, or a six-week hybrid certificate cohort of 20 to 40 with an in-person kickoff and capstone. Application between sessions is part of the design.</li>
+</ul>
+<p><strong>Address the organization</strong></p>
+<ul>
+<li><strong>Executive Intensive or Offsite.</strong> One or two days on one organizational challenge, with significant preparation before anyone enters the room. Retreat form available.</li>
+<li><strong>Organizational Advisory.</strong> Ongoing work that begins with a conversation, not a date. It usually opens with an Organizational Pulse Check: confidential leadership interviews and a written report.</li>
+</ul>
+<p><strong>Q. Which format do I recommend?</strong></p>
+<p>None on a first call, because you do not yet know enough to be right. Establish what is happening, who is in the room, what would count as success and who sponsors it. Then you recommend, and you scope and price it yourself using Part 7. The Executive Working Session is the signature room and the one to picture when you imagine the work.</p>
+<p><strong>Q. What is the Organizational Pulse Check?</strong></p>
+<p>A complete professional service: confidential leadership interviews across an organization, resulting in a written report. It has been delivered, most notably for Los Angeles World Airports.</p>
+<p>Never present it as a free sample, a diagnostic teaser or a way in. It is paid work in its own right. Offering it as a giveaway devalues both it and everything behind it.</p>
+<p><strong>Q. What about the programs?</strong></p>
+<p>The Executive Leadership Series: three working sessions a chamber or company can host or sponsor. Resilient Leadership is the flagship certificate cohort, with three focused specializations: Decision-Making Under Pressure, Leadership at Scale, and The Aligned Organization.</p>
+<p>Say that precisely. Resilient Leadership is one certificate with three specializations. It is not four parallel certificates. That error was made once in the copy and corrected by ruling; do not reintroduce it.</p>
+<p><strong>Q. And institutions?</strong></p>
+<p>Universities, chambers, associations and public agencies have their own lane: guest sessions that grow into series, certificates and annual programs, delivered under the institution's name or Ethan's. California-certified small business, direct-award eligible.</p>
+<hr />
+<h1>Part 6. The proof you may use</h1>
+<p>This is the whole list. It is short on purpose. Learn it exactly, because a proof point stated loosely is worse than one not stated at all.</p>
+<p><strong>Documented engagements.</strong></p>
+<ul>
+<li>Century City Chamber of Commerce: "Decision-Making Under Pressure", a members-only executive session, May 2026.</li>
+<li>Los Angeles World Airports: a confidential leadership diagnostic across fifteen executives, with a division-level report. A reference is available on request.</li>
+</ul>
+<p>That is the whole engagement proof set you may cite by name and description. The LAWA reference is real and it is arranged through Ethan's office. You do not hold the reference contact and you do not approach them.</p>
+<p><strong>The roster.</strong></p>
+<p>Executives and leadership teams from a list of named organizations have engaged Ethan's work. The list appears in text on ethanstarke.com. When you use it, use this wording and no other: <em>"Executives and leadership teams from these organizations have engaged Ethan's work."</em></p>
+<p>Three rules on the roster, and they are absolute:</p>
+<ol>
+<li><strong>No per-name description.</strong> You may not say what any named organization engaged him for, when, or at what level. The nature of each engagement is confidential by professional obligation.</li>
+<li><strong>No upgrade.</strong> "Executives from Company X have engaged his work" does not become "Company X is a client". Those are different claims and only the first is attested.</li>
+<li><strong>No logos.</strong> Names in text, never marks.</li>
+</ol>
+<p><strong>Credentials, books and the operator record.</strong> As set out in Part 1. All usable as stated.</p>
+<p><strong>Confidentiality as a positioning statement.</strong> You may say affirmatively that engagements are confidential by default, that confidentiality agreements are signed as standard, and that this is why there are no testimonials. The absence of testimonials is a stance, not a gap, and you should present it as one.</p>
+<hr />
+<h1>Part 7. What it costs and how long it runs</h1>
+<p>You are selling. You cannot sell what you cannot price. This part gives you the numbers.</p>
+<p>Every figure here comes from the Internal Pricing Matrix v1.0, which was built from actual quotes, proposals, invoices and the printed materials, each one sourced and dated. These are not estimates I produced. Where the estate has no evidence for a price, this manual says so rather than inventing one.</p>
+<p><strong>These numbers are yours to use with a buyer.</strong> Ethan's ruling: a serious buyer is entitled to know what serious work costs, and a premium price openly stated is an asset rather than a risk. What follows from that is a duty, not a licence. Quote from this table, quote accurately, and quote the same numbers your colleagues quote. An inconsistent price does the damage that a high price never does.</p>
+<h2>7.1 The table</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>What you are selling</th>
+<th>How long</th>
+<th>Band</th>
+<th>Where in the band</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Book-centered executive event, chamber or association only</td>
+<td>60 to 90 min</td>
+<td>$5,000 to $8,500</td>
+<td>Chamber relationship at base</td>
+</tr>
+<tr>
+<td>Executive Roundtable, curated small group, 8 to 25</td>
+<td>60 to 90 min</td>
+<td>$6,500 to $10,000</td>
+<td>Seniority and exclusivity move it up</td>
+</tr>
+<tr>
+<td>Strategic Networking Session</td>
+<td>60 to 90 min</td>
+<td>$5,000 to $9,000</td>
+<td></td>
+</tr>
+<tr>
+<td>Executive Keynote, corporate</td>
+<td>30 or 60 min</td>
+<td>$10,000 to $12,500</td>
+<td>Nothing above $12,500 until a sale evidences it</td>
+</tr>
+<tr>
+<td>Executive Working Session, hosted (chamber, association, forum)</td>
+<td>90 to 120 min</td>
+<td>$7,500 to $12,500</td>
+<td>The most evidenced band in the estate</td>
+</tr>
+<tr>
+<td>In-House Executive Session, private to one company</td>
+<td>90 to 120 min</td>
+<td>$12,500 to $25,000</td>
+<td>In-house always starts at $12,500, whatever the relationship</td>
+</tr>
+<tr>
+<td>Leadership-Team Working Session, the executive team itself</td>
+<td>90 to 120 min</td>
+<td>$15,000 to $30,000</td>
+<td></td>
+</tr>
+<tr>
+<td>Half or full day workshop</td>
+<td>Half or full day</td>
+<td>Priced as In-House or Leadership-Team</td>
+<td>Priced by customization, never by duration</td>
+</tr>
+<tr>
+<td>Executive Leadership Series, three sessions</td>
+<td>Weeks to months</td>
+<td>$22,500 to $37,500</td>
+<td>Chamber-hosted at base, company or sponsor at premium</td>
+</tr>
+<tr>
+<td>Industry Leadership Series or sponsored track</td>
+<td>Multi-session</td>
+<td>$25,000 to $60,000</td>
+<td></td>
+</tr>
+<tr>
+<td>Staff or manager workshop series</td>
+<td>Per workshop</td>
+<td>$18,000 per workshop</td>
+<td>Series is workshops times count</td>
+</tr>
+<tr>
+<td>Self-paced individual program with coaching support</td>
+<td>Self-paced</td>
+<td>$7,500 per participant</td>
+<td>Per-head pricing exists only here</td>
+</tr>
+<tr>
+<td>Private Executive Intensive or offsite</td>
+<td>1 to 2 days</td>
+<td>$15,000 to $35,000</td>
+<td></td>
+</tr>
+<tr>
+<td>Organizational Pulse Check, manager scale</td>
+<td>10 sessions plus report</td>
+<td>$25,000 flat</td>
+<td>The one diagnostic actually closed and delivered</td>
+</tr>
+<tr>
+<td>Organizational Pulse Check, company scale</td>
+<td>Multi-session</td>
+<td>$15,000 to $40,000</td>
+<td>$40,000 needs executive-team access and an org-level deliverable</td>
+</tr>
+<tr>
+<td>Organizational Pulse Check, division scale</td>
+<td>Program</td>
+<td>$120,000</td>
+<td>Proposal evidence only, never closed</td>
+</tr>
+<tr>
+<td>Structural Alignment Report</td>
+<td>Program</td>
+<td>$90,000</td>
+<td>Proposal evidence only</td>
+</tr>
+<tr>
+<td>Organizational Advisory retainer</td>
+<td>Ongoing, monthly</td>
+<td>$15,000 to $25,000 per month</td>
+<td></td>
+</tr>
+<tr>
+<td>Curriculum asset development, client-owned</td>
+<td>Project</td>
+<td>$150,000</td>
+<td>Proposal evidence only</td>
+</tr>
+<tr>
+<td>Institutional lane, year-long campus series</td>
+<td>One academic year</td>
+<td>About $180,000 per lane</td>
+<td>Public-agency direct-award ceiling is $249,999</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Books are separate, at cost, and that is stated on every proposal.</strong> The only exception is a package that explicitly includes them.</p>
+<h2>7.2 Placing the number, and holding it</h2>
+<p>Two disciplines govern how you use the table: where inside a band a given engagement sits, and what you do when a buyer says the number is high. Both are set out in the <strong>Commercial Annex</strong>, which is issued to you separately once you are signed. Read it before your first quote.</p>
+<p>Two things from it are worth stating here, because they are the ones people get wrong:</p>
+<ul>
+<li>The band is a scoping range you place accurately, not a negotiation range you slide down under pressure.</li>
+<li><strong>You never discount the price. You adjust the scope.</strong> A buyer who says the number is high has given you a scope problem or a value problem, and both have better answers than a smaller number.</li>
+</ul>
+<p>There are three strategic exceptions to any of this, and none of them are yours: co-presenting with a high-profile speaker, equity or advisory compensation for a top-tier company, and a multi-year chamber volume arrangement. All three are Ethan's.</p>
+<h2>7.3 What you can quote and close on your own</h2>
+<p><strong>Proposed, pending Ethan's ratification.</strong></p>
+<ul>
+<li><strong>Up to $30,000:</strong> you scope it, you quote it from the table, you write the proposal, you close it. Ethan is told, not asked.</li>
+<li><strong>$30,000 to $60,000:</strong> you build it, Ethan reads the proposal before it goes out.</li>
+<li><strong>Above $60,000, or anything not on the table above:</strong> Ethan runs it with you in the room.</li>
+</ul>
+<p>Without a line like this you cannot earn, so it needs to exist. The exact number is Ethan's to set.</p>
+<hr />
+<h1>Part 8. Who your best client is</h1>
+<p>Read this part twice as well. The difference between a representative who earns and one who does not is almost never effort. It is which doors they knock on.</p>
+<p><strong>Q. Where is the money actually concentrated?</strong></p>
+<p>Private, in-house corporate work and organizational diagnostics. An in-house session starts at $12,500 no matter who is asking. A leadership-team session runs to $30,000. A manager-scale Pulse Check is $25,000 closed and delivered. An advisory retainer is $15,000 to $25,000 every month.</p>
+<p><strong>Q. And where is it not?</strong></p>
+<p>Chamber and association work, which prices at base by rule. That does not make it worthless: it is the warmest room in the practice, the Century City engagement is one of only two documented engagements you may name, and chamber members are exactly the executives who buy in-house work. Treat a chamber as a source of introductions, not as a revenue line.</p>
+<p><strong>Q. What does the ideal client look like?</strong></p>
+<p>Six marks. Look for as many as you can find before you spend a week on someone.</p>
+<ol>
+<li><strong>A private company or an institution with its own budget,</strong> not a membership body spending members' money.</li>
+<li><strong>A named executive sponsor,</strong> ideally the person who will be in the room.</li>
+<li><strong>A live problem with a date attached.</strong> An offsite in eleven weeks, a leadership transition, a merger, a strategy that keeps stalling.</li>
+<li><strong>A leadership team of eight to forty,</strong> which is the shape every core format is built for.</li>
+<li><strong>Something recurring underneath it.</strong> An annual leadership meeting, a quarterly executive forum, an academy, a cohort. One-off events pay once.</li>
+<li><strong>Enough scale that $25,000 is a normal decision</strong> rather than an escalation.</li>
+</ol>
+<p><strong>Q. Which sectors?</strong></p>
+<p>The attested roster is heavy in banking and finance, law and professional services, real estate and development, energy, aviation and consumer companies, across the United States and the Gulf and Mexico. That is where the work has actually landed. Your existing targets are already segmented by category and by tier; work the segments where the practice already has proof.</p>
+<p><strong>Q. Is there an unfair advantage I should be using?</strong></p>
+<p>Yes, and most representatives will miss it. <strong>Public agencies and California state institutions.</strong> Ethan Starke LLC is a California-certified small business, which makes it direct-award eligible up to $249,999. That means a public buyer can engage him without running a competitive bid. Very few advisors in this market can say that, and it turns a nine-month procurement into a conversation. LAWA is the proof that it works.</p>
+<p><strong>Q. What is the highest-value path through an account?</strong></p>
+<p>The ladder is real and each rung is written into the offer. A keynote or a roundtable opens the door. The working session is where they see the method. In-house private work is the first real money. A diagnostic is how you get invited into the organization itself. Advisory retainer is where an account becomes an annuity.</p>
+<p>Sell the next rung, not the whole staircase. But know which staircase you are on.</p>
+<p><strong>Q. What is my legitimate way in?</strong></p>
+<p>The complimentary Executive Pulse Check: 30 to 45 minutes, one leader, free. It is a real part of the offer and its nominal value is about $1,500. It is your door opener and you may offer it.</p>
+<p>Do not confuse it with the <strong>Organizational</strong> Pulse Check, which is a paid program from $15,000 to $120,000 depending on scale. Offering that one free would give away a service Ethan has actually been paid $25,000 to deliver. One is an introduction to a person. The other is a professional engagement. Learn which is which before your first call.</p>
+<hr />
+<h1>Part 9. The lines that do not move</h1>
+<p>Short list. Everything on it is contractual, ruled, or both. Nothing on it is style.</p>
+<ol>
+<li><strong>No outcome guarantees.</strong> Ever. Not "your team will be aligned", not "you will see results".</li>
+<li><strong>No client stories.</strong> Not named, not anonymized, not "a company like yours". Engagements are confidential and agreements are signed. The anonymized version is the same breach wearing a costume.</li>
+<li><strong>No testimonials.</strong> There are none, by design.</li>
+<li><strong>No per-name detail on the roster.</strong> You may say executives and leadership teams from those organizations have engaged his work. You may not say what any of them engaged him for. And "executives from Company X" never becomes "Company X is a client".</li>
+<li><strong>No logos.</strong> Names in text.</li>
+<li><strong>An appearance is not a relationship.</strong> Speaking at an event is not a client engagement. Do not blur them.</li>
+<li><strong>No invented urgency.</strong> If two October dates are genuinely open, say two October dates are open, because that is a fact and facts are allowed. Do not manufacture a deadline, a holding fee or a filling calendar that does not exist. Executives detect it, and it costs more than the deal.</li>
+<li><strong>No framework names.</strong> The internal method names are not public. Describe what happens in the room.</li>
+<li><strong>No claim that the work is discovered, proven, or a new field.</strong> It is a practice, refined through application.</li>
+<li><strong>No direct discount, and no strategic exception on your own authority.</strong> Part 7.2 and the Commercial Annex.</li>
+<li><strong>No naming the specialist bench.</strong> Outside depth exists in culture and financial wellbeing. Ethan introduces those people when it is relevant. (Open item, Part 15.)</li>
+</ol>
+<hr />
+<h1>Part 10. Why this sells at this price</h1>
+<p>You now have the numbers, so here is the part that makes them achievable.</p>
+<p>You are asking a senior executive for twenty-five thousand dollars. The instinct is to work harder at persuading. That instinct is wrong here, and understanding why is worth more to your income than any technique.</p>
+<p>This buyer is sold to constantly by people who are good at it. They have a fine ear for method being run on them, and the moment they hear one, the conversation is over in their head even while it continues in the room. What almost never happens to them is a conversation with someone who describes the work plainly, quotes a real number without flinching, says what it does not do, and is visibly willing to walk away.</p>
+<p>That is not a gentler form of selling. At this price point it is the only form that works.</p>
+<p>Three things follow, and they are how you close rather than how you behave:</p>
+<p><strong>Quote the number cleanly and stop talking.</strong> The most common way a representative loses a $25,000 engagement is to say the number and then keep going: justifying it, softening it, hinting at flexibility. Say it, let it sit, and let them respond. Silence after a price is not awkwardness. It is confidence, and they read it as such.</p>
+<p><strong>Being willing to lose it is what makes you credible.</strong> A representative who says "I do not think this is the right instrument for what you have described, and here is what I would do instead" has just proved that everything else they said was honest. That person gets called back, and often gets introduced onward.</p>
+<p><strong>You are spending a reputation you did not build.</strong> Twenty years in the seat, three continents, an attested roster and a real obligation of confidentiality. Represent it the way you would represent someone you respect, because you are, and because the reputation is what makes the number believable in the first place.</p>
+<hr />
+<h1>Part 11. Running a deal to close</h1>
+<p>Your job does not end when you book a call for Ethan. It ends when the engagement is signed. That is what you are paid for and that is what the pipeline measures.</p>
+<p><strong>The ladder you actually work, and what each step means:</strong></p>
+<ol>
+<li><strong>Not started.</strong> Claimed and named, nobody contacted.</li>
+<li><strong>Researching.</strong> You are doing the homework. Who is the buyer, what is happening there, why now.</li>
+<li><strong>Need warm path.</strong> You want an introduction before a cold approach.</li>
+<li><strong>Intro requested / Intro made.</strong></li>
+<li><strong>Outreach sent.</strong></li>
+<li><strong>Follow-up due.</strong></li>
+<li><strong>Meeting set / Meeting completed.</strong> Your meeting, not Ethan's.</li>
+<li><strong>Proposal discussed.</strong> You have put structure and a number in front of them.</li>
+<li><strong>Active opportunity.</strong> They are working on making it happen.</li>
+<li><strong>Closed won.</strong> Signed.</li>
+<li><strong>Dormant / Not a fit.</strong> Recorded honestly with a reason.</li>
+</ol>
+<p><strong>The homework gate.</strong> You do not contact an organization until the buyer is named and verified and the dossier exists. Not because of ceremony, but because an executive deletes a generic approach in under two seconds, and you only get one.</p>
+<p><strong>What the discovery meeting is for.</strong> Not to present. To establish, in their words: what prompted this now; what is occupying the executive team; which initiatives keep stalling; how leadership is developed today; what success looks like in a year; who sponsors it; whether attendance would be voluntary. The last two predict everything.</p>
+<p><strong>Then you scope and quote.</strong> From the table in Part 7, placed accurately in the band using the Commercial Annex. You do this. Not Ethan.</p>
+<p><strong>The proposal has a fixed shape,</strong> because it is the practice's shape and not yours: executive understanding of their situation, recommended approach, expected outcomes, investment, next stage. Books listed separately at cost.</p>
+<p><strong>When Ethan comes in.</strong> For a large or complex engagement he joins before the proposal goes out, per the thresholds in 7.3. He is not a gate you have to get past. He is the person who has to deliver it, and a scope he has not seen is a scope he cannot honour.</p>
+<p><strong>Record everything the same day, in the buyer's own words.</strong> Not your summary. Ethan's ability to walk into a room already understanding the situation depends entirely on what you wrote down. So does your commission, when someone else has to pick the account up.</p>
+<p><strong>On email.</strong> First contact and the proposal go out on the templates, which are authored from canon and changed only by Ethan. Everything after that is yours to write. The templates exist because under pressure everyone improvises, an improvisation that works once becomes a habit, and within a month the practice's positioning is whatever the newest representative decided it was. They hold the line at first contact so it does not have to be held at seven on a Thursday.</p>
+<hr />
+<h1>Part 12. Questions you will be asked</h1>
+<p><strong>"What does it cost?"</strong>
+Answer with the number for what they have described. "An in-house executive session for your leadership team is twelve and a half to twenty-five thousand, depending on how much of it we build specifically for you." Then stop. Do not narrate the number.</p>
+<p><strong>"Why is it that much?"</strong>
+Because it is private, built for their room, and delivered by someone who ran companies for twenty years before he advised anyone. Then turn it around: what is the decision they are stuck on currently costing them? You are not defending a price, you are sizing a problem.</p>
+<p><strong>"Can you do better on the number?"</strong>
+Not on the number, yes on the shape. Then run the ladder in the Commercial Annex. Never a smaller number for the same thing.</p>
+<p><strong>"Can you send me a proposal?"</strong>
+Yes, once you understand the situation well enough to write a real one. A proposal built from a form is a quote, and this practice does not send quotes.</p>
+<p><strong>"Who else have you worked with?"</strong>
+Executives and leadership teams from a named list of organizations have engaged his work; the list is on the site. If they press for detail: the nature of each engagement is confidential, and that confidentiality is exactly why senior people speak freely in his rooms. That answer usually raises their estimate of you.</p>
+<p><strong>"Do you have case studies or references?"</strong>
+No case studies and no testimonials, by design. One reference exists, for a public agency engagement, and it is arranged through Ethan's office.</p>
+<p><strong>"How is this different from the leadership program we already run?"</strong>
+Ask what theirs does before you answer. Then honestly: most programs deliver content. This works the live decisions the participants walk in with, and they leave with commitments in their own words. If theirs already does that well, say so.</p>
+<p><strong>"Is he a speaker, a coach, or a consultant?"</strong>
+An Executive Advisor who was an operator first. He speaks, but a keynote is a door.</p>
+<p><strong>"Can he guarantee results?"</strong>
+No, and nobody honest can. What is guaranteed is the structure of the room and the preparation behind it.</p>
+<p><strong>"Can he do it next week?"</strong>
+The office checks the calendar against a real request and confirms within one business day. Do not hold dates or imply availability you have not checked.</p>
+<p><strong>"Send me some information."</strong>
+Usually a soft no. Ask one more question about the situation before you agree. If it is genuine, the site and the printable session summary are what you send.</p>
+<p><strong>"We only have ten thousand."</strong>
+Then you have learned something useful. Ten thousand buys a corporate keynote or a hosted working session, and both are real starting points with a written path to the next rung. What it does not buy is in-house private work, and you say so plainly.</p>
+<hr />
+<h1>Part 13. When to walk away</h1>
+<p>You are expected to. A courteous redirect is a recorded outcome, not a loss, and it is not counted against you.</p>
+<p>Walk when there is no senior sponsor. When attendance would be compulsory. When they want entertainment rather than work. When the real problem is something Ethan does not do and someone else does better. When they want a guarantee. When they want the Organizational Pulse Check for free. When the budget is genuinely below the floor of everything and there is no path upward.</p>
+<p>Say it plainly, with a reason, and leave something useful behind. "I do not think a session is the right instrument for what you have described, because what you are describing sounds like X. What I would do first is Y. If that changes, come back to me."</p>
+<p>That person returns more often than you would expect, and they bring someone with them.</p>
+<hr />
+<h1>Part 14. Self-check</h1>
+<p>Close the manual. If you cannot answer these out loud, you are not ready.</p>
+<ol>
+<li>Who is Ethan Starke, in one sentence, using his actual title?</li>
+<li>What happens inside a working session?</li>
+<li>Name the six territories by their situation, not their title.</li>
+<li>Name the eight formats in ladder order.</li>
+<li>What does an in-house executive session cost, and what is the floor rule?</li>
+<li>What does a leadership-team session cost? A manager-scale Pulse Check? An advisory retainer?</li>
+<li>What is the floor for any in-house work, and why does a warm relationship not move it?</li>
+<li>A buyer asks for ten percent off. Say your answer out loud, then say what you offer instead. (Annex.)</li>
+<li>Name the six marks of an ideal client.</li>
+<li>Why are public agencies an unfair advantage, and up to what figure?</li>
+<li>What is the difference between the Executive Pulse Check and the Organizational Pulse Check?</li>
+<li>Name six of the lines that do not move.</li>
+<li>Recite the roster wording exactly.</li>
+<li>What are the two documented engagements you may describe?</li>
+<li>What must be true before you contact an organization at all?</li>
+<li>Name three situations in which you walk away.</li>
+<li>Why does quoting a number cleanly and then stopping work better than justifying it?</li>
+</ol>
+<hr />
+<h1>Part 15. Where this lives, and what is still open</h1>
+<p><strong>Canonical source:</strong> <code>06_VENTURES/EthanStarkeLLC/Operations/Training/</code> in the Ethan OS record, alongside the Commercial Annex. Those copies govern and are amended only by Ethan's ruling.</p>
+<p><strong>Working copy:</strong> Notion, on a private page in the onboarding space shared by name with each seller and nobody else, once ratified. Notion cannot enforce row-level permissions, which is what defeated the CRM design, but page-level sharing is sufficient for one document.</p>
+<p><strong>Eventual home:</strong> inside the desk at <code>crm.ethanstarke.com</code>, behind the sign-in, next to the templates it describes and the price table it quotes. Arrives with Phase 2.</p>
+<p><strong>The Commercial Annex travels separately.</strong> It is issued to a signed seller after the seller agreement is executed, never posted in a shared space and never attached to anything that reaches a client. It carries where in a band an engagement sits and how a price is held, which is a negotiating position rather than a price, and those are different exposures.</p>
+<p><strong>Ratified with the following items still open. They do not block issue; they are what the next version will carry.</strong></p>
+<ol>
+<li><strong>His own account of his path.</strong> Part 1 is thin exactly where it should be strongest. Three operator facts are attested; the story is not written down anywhere in the record I hold. Which companies, which continents, what the defense-robotics venture was, and what he learned in the seat. It belongs here in his words.</li>
+<li><strong>The commission plan.</strong> This manual tells a representative to close. It cannot tell them what closing pays, because no compensation structure exists yet. That is Ethan's to set and it must exist before anyone is hired. One design note worth having on the record: paying a higher rate on engagements sold at the upper half of the band aligns the representative with the Commercial Annex instead of against it.</li>
+<li><strong>The quoting thresholds in 7.3.</strong> Proposed at $30,000 and $60,000. Ethan sets the real numbers.</li>
+<li>
+<p><strong>Three offerings have no price in the record.</strong> The six-week certificate cohorts (Resilient Leadership and its three specializations), licensed curriculum and facilitator licensing, and coaching, which sits outside this practice entirely. The estate carries no evidence for any of them, so the table in Part 7 cannot show them. Price them and the table is complete; leave them and a representative asked about a cohort has nothing to work from. This is a gap in the instrument, not a rule for the seller.</p>
+</li>
+<li>
+<p><strong>Executive Advisor across the estate. CLOSED 31 August 2026.</strong> Applied throughout this manual, and applied to the gateway the same day: the page reads Executive Advisor, and the address, the four Wix redirects and the Wix menu item are now Executive Engagements.</p>
+</li>
+<li><strong>Price disclosure scope.</strong> Ethan has ruled that representatives quote openly from the matrix. The gateway itself still publishes no pricing under Gateway_Spec_v1.0_LOCKED Part 10. This manual assumes that ruling is unchanged and that the change is to what a person may say, not to what the page displays.</li>
+<li><strong>The three practice figures,</strong> held since 2026-08-30 pending provenance. Still held unless Ethan says otherwise.</li>
+<li><strong>The specialist bench.</strong> Named in the copy document, absent from the built page. May a representative say outside depth exists, and in what words?</li>
+<li><strong>Anything in Part 12 he would answer differently.</strong> Those answers are mine, built from his rulings and his price matrix. Where he disagrees, his version replaces mine.</li>
+</ol>
+<p>This manual is ratified and may be issued to a seller. The Commercial Annex is not part of it and travels separately, as a schedule to the seller agreement.</p>
+<hr />
+<p><em>Ratified by Ethan Starke, 31 August 2026. Prepared and maintained by Joshua Sterling, Chief Venture Officer, Venture Development, Ethan OS.</em></p></main>
+<footer><div class="rule">Ethan Starke LLC. Internal document, not for distribution. Prepared by Joshua Sterling, Chief Venture Officer, Venture Development.</div></footer>
+</body></html>
