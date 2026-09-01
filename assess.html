@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="referrer" content="no-referrer">
+<title>Assessment</title>
+<link rel="icon" href="favicon.png">
+<style>
+@font-face{font-family:'FrauncesDisp';src:url(fonts/fraunces-disp.woff2) format('woff2');font-weight:100 900;font-display:swap;}
+@font-face{font-family:'Fraunces';src:url(fonts/fraunces-var.woff2) format('woff2');font-weight:100 900;font-display:swap;}
+@font-face{font-family:'Archivo';src:url(fonts/archivo-var.woff2) format('woff2');font-weight:100 900;font-display:swap;}
+:root{--nblk:#0A1220;--cream:#F1E9D6;--gold:#C7A24E;--goldink:#6F5624;--paper:#FAF7F0;
+--ink:#20242B;--slate:#5C6472;--rule:#E0D8C6;--warn:#8A3324;
+--serif:'Fraunces',Georgia,serif;--disp:'FrauncesDisp',Georgia,serif;--sans:'Archivo','Segoe UI',Arial,sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.6;}
+header{background:var(--nblk);color:var(--cream);padding:16px 0;position:sticky;top:0;z-index:5;}
+header .in{max-width:760px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.mark{font-family:var(--sans);font-weight:600;letter-spacing:.18em;font-size:11px;text-transform:uppercase;}
+#clockwrap{display:flex;align-items:baseline;gap:9px;}
+#clocklab{font-family:var(--sans);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8C93A1;}
+#clock{font-family:var(--sans);font-size:22px;font-weight:600;letter-spacing:.02em;color:var(--gold);font-variant-numeric:tabular-nums;}
+#clock.low{color:#E8A07E;}
+#bar{height:3px;background:#1B2536;}
+#bar span{display:block;height:100%;width:100%;background:var(--gold);transition:width 1s linear;}
+#bar.low span{background:#E8A07E;}
+main{max-width:760px;margin:0 auto;padding:44px 24px 110px;}
+h1{font-family:var(--disp);font-weight:500;font-size:clamp(28px,5vw,40px);line-height:1.12;margin:0 0 18px;}
+h2{font-family:var(--disp);font-weight:500;font-size:26px;margin:0 0 6px;}
+.sec{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;}
+p{margin:0 0 15px;}
+.lead{color:var(--slate);}
+.q{border-top:1px solid var(--rule);padding:22px 0 4px;}
+.q p.t{font-weight:600;margin-bottom:10px;}
+label.opt{display:block;font-family:var(--sans);font-size:15px;line-height:1.45;padding:9px 12px;margin-bottom:6px;
+border:1px solid var(--rule);border-radius:2px;cursor:pointer;background:#fff;}
+label.opt:hover{border-color:var(--gold);}
+label.opt input{margin-right:9px;}
+label.opt.sel{border-color:var(--goldink);background:#FDF6E3;}
+input[type=text],textarea{width:100%;font-family:var(--sans);font-size:15.5px;line-height:1.5;padding:10px 12px;
+border:1px solid var(--rule);border-radius:2px;background:#fff;color:var(--ink);}
+textarea{min-height:150px;resize:vertical;}
+input:focus,textarea:focus{outline:none;border-color:var(--goldink);}
+.count{font-family:var(--sans);font-size:12px;color:var(--slate);margin-top:5px;}
+.count.over{color:var(--warn);font-weight:600;}
+button{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+background:var(--nblk);color:var(--cream);border:0;padding:15px 30px;border-radius:2px;cursor:pointer;margin-top:26px;}
+button:disabled{opacity:.4;cursor:not-allowed;}
+button.ghost{background:none;color:var(--goldink);border:1px solid var(--rule);}
+.box{background:#fff;border:1px solid var(--rule);border-left:3px solid var(--gold);padding:16px 18px;margin:0 0 18px;
+font-family:var(--sans);font-size:15px;line-height:1.55;}
+.warn-box{background:#FDF1EC;border:1px solid #D9A78F;border-left:3px solid var(--warn);padding:16px 18px;margin:0 0 18px;
+font-family:var(--sans);font-size:15px;line-height:1.55;color:#5A2A1C;}
+.warn-box strong{display:block;margin-bottom:4px;color:var(--warn);}
+.box strong{display:block;margin-bottom:4px;}
+.box ul{margin:8px 0 0 18px;}
+.box li{margin-bottom:5px;}
+.err{color:var(--warn);font-family:var(--sans);font-size:14px;margin-top:12px;}
+.scale{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;}
+.scale label{font-family:var(--sans);font-size:14px;border:1px solid var(--rule);border-radius:2px;padding:7px 13px;cursor:pointer;background:#fff;}
+.scale label.sel{border-color:var(--goldink);background:#FDF6E3;}
+.hid{display:none !important;}
+@media(max-width:600px){body{font-size:16px;}main{padding:30px 18px 90px;}}
+</style>
+</head><body>
+<header>
+  <div class="in"><span class="mark">Ethan Starke</span>
+    <span id="clockwrap" class="hid"><span id="clocklab">Time remaining</span><span id="clock"></span></span>
+  </div>
+  <div id="bar" class="hid"><span></span></div>
+</header>
+<main>
+
+<section id="s-gate">
+  <div class="sec">Applicant assessment</div>
+  <h1>Before you begin</h1>
+
+  <div class="warn-box">
+    <strong>This has to be done in one sitting.</strong>
+    You have twenty-five minutes from the moment you press Begin, and the clock keeps running whether this page is open or not. There is no pause and no way to resume later. Do not start until you have a clear half hour and will not be interrupted.
+  </div>
+
+  <div class="box">
+    <strong>This is not a graded test.</strong>
+    There is no pass mark, no score to beat, and nothing here you can fail. It is a profile: it tells Ethan Starke what you are strong at and where you would need support. Answer honestly rather than strategically. A candid answer is more use to you than a polished one.
+  </div>
+
+  <div class="box">
+    <strong>How it works</strong>
+    <ul>
+      <li>A countdown sits at the top of the screen throughout, so you always know where you stand.</li>
+      <li>Six short sections. You move forward only; you cannot return to a section.</li>
+      <li>You are identified by your code alone. Do not put your name anywhere.</li>
+      <li>You may take it more than once. The questions change between attempts.</li>
+      <li>You will not be shown a result. Your answers go to Ethan Starke's office and you will hear from the office directly.</li>
+      <li>Two sections ask you to write. Write as you would to a real executive.</li>
+    </ul>
+  </div>
+  <p><label for="code" style="font-family:var(--sans);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);">Your code</label></p>
+  <input type="text" id="code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="">
+  <div id="gate-err" class="err"></div>
+  <button id="begin">Begin</button>
+</section>
+
+<section id="s-a" class="hid"></section>
+<section id="s-b" class="hid"></section>
+<section id="s-c" class="hid"></section>
+<section id="s-d" class="hid"></section>
+<section id="s-e" class="hid"></section>
+<section id="s-f" class="hid"></section>
+
+<section id="s-done" class="hid">
+  <div class="sec">Received</div>
+  <h1>Thank you.</h1>
+  <p class="lead">Your assessment has reached Ethan Starke's office. You will hear from the office directly.</p>
+  <p class="lead">Nothing here was graded and no score is shown, by design. If you would like another go on a different set of questions, your code still works.</p>
+  <p class="lead">You may close this page.</p>
+</section>
+
+</main>
+<script>
+var ENDPOINT = 'https://script.google.com/macros/s/AKfycbySN-qGHPk1MLVhr2eW5-eKXyISVomYezuk9QJU8OFA9sSCSqKURUzqu7w4jfPQRuKMFA/exec';
+var S = { token:null, data:null, answers:{}, deadline:0, total:1500, sent:false };
+var $ = function(id){ return document.getElementById(id); };
+var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+function show(id){ ['s-gate','s-a','s-b','s-c','s-d','s-e','s-f','s-done'].forEach(function(x){ $(x).classList.add('hid'); });
+  $(id).classList.remove('hid'); window.scrollTo(0,0); }
+
+function tick(){
+  if(!S.deadline) return;
+  var left = Math.max(0, Math.round((S.deadline - Date.now())/1000));
+  var m = Math.floor(left/60), s = left%60;
+  $('clock').textContent = m + ':' + (s<10?'0':'') + s;
+  var low = left < 300;
+  $('clock').className = low ? 'low' : '';
+  $('bar').className = low ? 'low' : '';
+  $('bar').firstElementChild.style.width = (left / S.total * 100) + '%';
+  $('clocklab').textContent = left < 60 ? 'Finishing up' : 'Time remaining';
+  if(left <= 0 && !S.sent){ send(); }
+}
+setInterval(tick, 1000);
+
+$('begin').onclick = function(){
+  var code = $('code').value.trim();
+  if(!code){ $('gate-err').textContent = 'Enter your code.'; return; }
+  this.disabled = true; this.textContent = 'Checking';
+  post({ action:'start', code:code }, function(r){
+    if(!r || !r.ok){ $('gate-err').textContent = (r && r.error) || 'Could not start. Try again.';
+      $('begin').disabled = false; $('begin').textContent = 'Begin'; return; }
+    S.token = r.token; S.data = r; S.total = r.limit; S.deadline = Date.now() + r.limit*1000;
+    $('clockwrap').classList.remove('hid'); $('bar').classList.remove('hid');
+    buildAll(); show('s-a'); tick();
+  });
+};
+
+function post(body, cb){
+  fetch(ENDPOINT, { method:'POST', body: JSON.stringify(body) })
+    .then(function(x){ return x.json(); }).then(cb)
+    .catch(function(){ cb({ ok:false, error:'Network problem. Check your connection and try again.' }); });
+}
+
+function nav(next, label){
+  var b = document.createElement('button');
+  b.textContent = label || 'Continue';
+  b.onclick = function(){ show(next); };
+  return b;
+}
+
+function buildAll(){
+  var d = S.data;
+
+  var a = $('s-a');
+  a.innerHTML = '<div class="sec">Section A of F</div><h2>Your track record</h2>' +
+    '<p class="lead">Be specific. Anything vague here is read as nothing. Everything you write can be checked in a ten minute call, so write only what you can stand behind.</p>' +
+    d.a.map(function(q){ return '<div class="q"><p class="t">' + esc(q.label) + '</p>' +
+      '<input type="text" data-k="' + q.id + '" autocomplete="off"></div>'; }).join('');
+  a.appendChild(nav('s-b'));
+
+  $('s-b').innerHTML = '<div class="sec">Section B of F</div><h2>The market</h2>' +
+    '<p class="lead">One answer each. Move quickly; your first instinct is the useful signal.</p>' + mcq(d.b);
+  $('s-b').appendChild(nav('s-c'));
+
+  $('s-c').innerHTML = '<div class="sec">Section C of F</div><h2>Judgment</h2>' +
+    '<p class="lead">None of these has a comfortable answer. Choose the one you would actually do.</p>' + mcq(d.c);
+  $('s-c').appendChild(nav('s-d'));
+
+  $('s-d').innerHTML = '<div class="sec">Section D of F</div><h2>Write to a stranger</h2>' +
+    '<div class="box"><strong>' + esc(d.d.org) + '</strong><br>Contact: ' + esc(d.d.role) +
+    '<ul>' + d.d.facts.map(function(f){ return '<li>' + esc(f) + '</li>'; }).join('') + '</ul></div>' +
+    '<p>' + esc(d.d.brief) + '</p>' +
+    '<textarea data-k="email" id="ta-email"></textarea><div class="count" id="c-email">0 of 150 words</div>';
+  $('s-d').appendChild(nav('s-e'));
+  counter('ta-email','c-email',150);
+
+  $('s-e').innerHTML = '<div class="sec">Section E of F</div><h2>A correction</h2>' +
+    '<p class="lead">Here is an email one of our representatives sent. It is wrong in four ways, and we are telling you all four.</p>' +
+    '<div class="box" style="border-left-color:#8A3324">' + esc(d.e.bad) + '</div>' +
+    '<div class="box"><strong>What is wrong with it</strong><ul>' +
+      d.e.faults.map(function(f){ return '<li>' + esc(f) + '</li>'; }).join('') + '</ul></div>' +
+    '<p>' + esc(d.e.brief) + '</p>' +
+    '<textarea data-k="rewrite" id="ta-rw"></textarea><div class="count" id="c-rw">0 of 120 words</div>';
+  $('s-e').appendChild(nav('s-f'));
+  counter('ta-rw','c-rw',120);
+
+  $('s-f').innerHTML = '<div class="sec">Section F of F</div><h2>Yourself</h2>' +
+    '<p class="lead">Rate yourself from 1, not yet, to 5, this is a strength of mine.</p>' +
+    d.f.map(function(t,i){ return '<div class="q"><p class="t">' + esc(t) + '</p><div class="scale" data-self="' + i + '">' +
+      [1,2,3,4,5].map(function(n){ return '<label data-v="' + n + '">' + n + '</label>'; }).join('') + '</div></div>'; }).join('');
+  var sub = document.createElement('button');
+  sub.textContent = 'Submit assessment';
+  sub.onclick = function(){ sub.disabled = true; sub.textContent = 'Sending'; send(); };
+  $('s-f').appendChild(sub);
+
+  document.addEventListener('click', function(ev){
+    var l = ev.target.closest('.scale label'); if(!l) return;
+    var wrap = l.parentNode; [].forEach.call(wrap.children, function(c){ c.classList.remove('sel'); });
+    l.classList.add('sel');
+  });
+}
+
+function mcq(list){
+  return list.map(function(q){
+    return '<div class="q"><p class="t">' + esc(q.q) + '</p>' + q.o.map(function(o,i){
+      return '<label class="opt"><input type="radio" name="' + q.id + '" value="' + i + '">' + esc(o) + '</label>';
+    }).join('') + '</div>';
+  }).join('');
+}
+document.addEventListener('change', function(ev){
+  if(ev.target.type !== 'radio') return;
+  var name = ev.target.name;
+  [].forEach.call(document.getElementsByName(name), function(r){ r.closest('label').classList.remove('sel'); });
+  ev.target.closest('label').classList.add('sel');
+});
+
+function counter(taId, cId, max){
+  var ta = $(taId), c = $(cId);
+  ta.addEventListener('input', function(){
+    var n = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0;
+    c.textContent = n + ' of ' + max + ' words';
+    c.className = n > max ? 'count over' : 'count';
+  });
+}
+
+function collect(){
+  var out = {};
+  [].forEach.call(document.querySelectorAll('[data-k]'), function(el){ out[el.dataset.k] = el.value; });
+  [].forEach.call(document.querySelectorAll('input[type=radio]:checked'), function(r){ out[r.name] = r.value; });
+  out.self = [].map.call(document.querySelectorAll('.scale'), function(w){
+    var s = w.querySelector('label.sel'); return s ? Number(s.dataset.v) : 0; });
+  return out;
+}
+
+function send(){
+  if(S.sent) return; S.sent = true; S.deadline = 0;
+  $('clockwrap').classList.add('hid'); $('bar').classList.add('hid');
+  post({ action:'submit', token:S.token, answers:collect() }, function(){ show('s-done'); });
+}
+window.addEventListener('beforeunload', function(e){ if(S.token && !S.sent){ e.preventDefault(); e.returnValue = ''; } });
+</script>
+</body></html>
