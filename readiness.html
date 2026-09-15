@@ -63,21 +63,61 @@ border:1px solid currentColor;border-radius:2px;padding:4px 10px;margin-bottom:1
 .tag.ok{color:var(--ok);} .tag.hold{color:var(--slate);}
 .hid{display:none !important;}
 @media(max-width:600px){body{font-size:16px;}main{padding:30px 18px 90px;}}
+
+/* The reading. Open book on Ethan Starke's ruling of 15 September 2026.
+   Served inside the attempt only and destroyed on submission. */
+#readbtn{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+background:none;border:1px solid var(--gold);color:var(--gold);border-radius:2px;padding:6px 12px;cursor:pointer;margin-left:16px;}
+#readbtn:hover{background:var(--gold);color:var(--nblk);}
+#reader{position:fixed;top:0;right:0;bottom:0;width:min(560px,92vw);background:var(--paper);
+border-left:1px solid rgba(10,18,32,.18);box-shadow:-18px 0 40px rgba(10,18,32,.18);
+display:flex;flex-direction:column;z-index:50;transform:translateX(102%);transition:transform .22s ease;}
+#reader.open{transform:translateX(0);}
+#reader .rhead{padding:14px 18px;display:flex;gap:10px;align-items:center;background:var(--nblk);}
+#reader .rhead .rt{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);flex:1;}
+#reader .rhead button{font-family:var(--sans);font-size:12px;background:none;border:1px solid var(--gold);color:var(--gold);border-radius:2px;padding:5px 10px;cursor:pointer;}
+#rsearchwrap{padding:10px 18px;border-bottom:1px solid rgba(10,18,32,.12);display:flex;gap:8px;align-items:center;}
+#rsearch{flex:1;font-family:var(--sans);font-size:14px;padding:7px 10px;border:1px solid rgba(10,18,32,.25);border-radius:2px;background:#fff;}
+#rcount{font-family:var(--sans);font-size:12px;color:var(--slate);white-space:nowrap;}
+#rnext{font-family:var(--sans);font-size:12px;padding:6px 9px;border:1px solid rgba(10,18,32,.3);background:#fff;border-radius:2px;cursor:pointer;}
+#rbody{overflow:auto;padding:18px 22px 60px;line-height:1.55;}
+#rbody h1{font-size:19px;margin:26px 0 10px;}
+#rbody h2{font-size:16px;margin:20px 0 8px;}
+#rbody p,#rbody li{font-size:15px;}
+#rbody table{width:100%;border-collapse:collapse;font-size:13px;}
+#rbody th,#rbody td{border:1px solid rgba(10,18,32,.18);padding:6px 8px;text-align:left;}
+#rbody mark{background:var(--gold);color:var(--nblk);}
+#rbody mark.on{outline:2px solid var(--nblk);}
+@media(max-width:600px){#reader{width:100vw;}#readbtn{margin-left:8px;padding:5px 8px;letter-spacing:.08em;}}
 </style>
 </head><body>
 <header>
   <div class="in"><span class="mark">Ethan Starke</span>
     <span id="clockwrap" class="hid"><span id="clocklab">Time remaining</span><span id="clock"></span></span>
+    <button id="readbtn" class="hid" type="button">The manual</button>
   </div>
   <div id="bar" class="hid"><span></span></div>
 </header>
+
+<aside id="reader" class="hid" aria-label="The Practice, Explained">
+  <div class="rhead"><span class="rt">The Practice, Explained</span><button id="rclose" type="button">Close</button></div>
+  <div id="rsearchwrap">
+    <input id="rsearch" type="search" placeholder="Search the manual" autocomplete="off" spellcheck="false">
+    <span id="rcount"></span>
+    <button id="rnext" type="button">Next</button>
+  </div>
+  <div id="rbody"></div>
+</aside>
+
 <main>
 
 <section id="s-gate">
   <div class="sec">Readiness interview</div>
   <h1>Before you begin</h1>
 
-  <p class="lead">This is the second of the two written interviews, and the last one. It is an exam on <em>The Practice, Explained</em> and on the Commercial Annex that travels with it. Everything it asks is in those two documents.</p>
+  <p class="lead">This is the second of the two written interviews, and the last one. It is an <strong>open-book</strong> exam on <em>The Practice, Explained</em>, the manual this practice runs on. You are not expected to have read it before today.</p>
+
+  <p class="lead">The manual is on this page while you sit the interview. Open it with <strong>The manual</strong> at the top of the screen, and search it. Everything the interview asks is in it. It is here for the forty minutes and not afterwards: it closes when you submit, and it is not yours to keep or to pass on.</p>
 
   <div class="warn-box">
     <strong>Forty minutes, in one sitting.</strong>
@@ -135,7 +175,7 @@ border:1px solid currentColor;border-radius:2px;padding:4px 10px;margin-bottom:1
 <section id="s-held" class="hid">
   <span class="tag hold">Not yet</span>
   <h1>Thank you.</h1>
-  <p class="lead">Two areas are worth another pass before you go further: <strong id="weak"></strong>. Go back to those parts of the manual and sit this again whenever you like, on a fresh set of questions. You can start again after twenty-four hours, using the same link and code.</p>
+  <p class="lead">Two areas are worth another pass before you go further: <strong id="weak"></strong>. The manual will be open to you again when you sit it. You can start again after twenty-four hours, using the same link and code, on a fresh set of questions.</p>
   <p class="lead">You may close this page.</p>
 </section>
 
@@ -148,7 +188,7 @@ var TITLES = {
   2:['Territories and formats','Parts 4 and 5. One answer each.'],
   3:['Money','Part 7. Quote accurately or not at all.'],
   4:['The lines that do not move','Part 9. Two of these end the attempt; you were told which before you began.'],
-  5:['Holding the number','The Commercial Annex. Two of these take more than one answer.'],
+  5:['Holding the number','Parts 9, 10 and 12. One answer each.'],
   6:['Running a deal, and walking away','Parts 11 and 13.'],
   7:['Two things to write','Composed, not looked up.']
 };
@@ -178,6 +218,91 @@ function post(body, cb){
     .catch(function(){ cb({ ok:false, error:'Network problem. Check your connection and try again.' }); });
 }
 
+/* ---------------------------------------------------- the reading, open book.
+   The manual arrives with the attempt, lives in the page for the forty minutes,
+   and is destroyed on submission. It is never written to storage of any kind and
+   the candidate is never given its own address. */
+var R = { hits:[], at:-1 };
+
+function mountReading(html){
+  $('rbody').innerHTML = html;
+  $('reader').classList.remove('hid');
+  $('readbtn').classList.remove('hid');
+}
+
+function wipeReading(){
+  if($('rbody')) $('rbody').innerHTML = '';
+  if($('reader')){ $('reader').classList.remove('open'); $('reader').classList.add('hid'); }
+  if($('readbtn')) $('readbtn').classList.add('hid');
+  R.hits = []; R.at = -1;
+  if(S.data) S.data.manual = null;
+}
+
+$('readbtn').onclick = function(){
+  var open = $('reader').classList.toggle('open');
+  if(open) $('rsearch').focus();
+};
+$('rclose').onclick = function(){ $('reader').classList.remove('open'); };
+
+function clearMarks(){
+  var b = $('rbody');
+  var marks = b.querySelectorAll('mark');
+  for(var i = 0; i < marks.length; i++){
+    var m = marks[i];
+    m.parentNode.replaceChild(document.createTextNode(m.textContent), m);
+  }
+  b.normalize();
+  R.hits = []; R.at = -1;
+}
+
+function runSearch(){
+  clearMarks();
+  var term = $('rsearch').value.trim();
+  $('rcount').textContent = '';
+  if(term.length < 2) return;
+  var low = term.toLowerCase();
+  var b = $('rbody');
+  var walker = document.createTreeWalker(b, NodeFilter.SHOW_TEXT, null, false);
+  var nodes = [], n;
+  while((n = walker.nextNode())) nodes.push(n);
+  nodes.forEach(function(node){
+    var txt = node.nodeValue;
+    var i = txt.toLowerCase().indexOf(low);
+    if(i < 0) return;
+    var frag = document.createDocumentFragment(), pos = 0;
+    while(i >= 0){
+      frag.appendChild(document.createTextNode(txt.slice(pos, i)));
+      var m = document.createElement('mark');
+      m.appendChild(document.createTextNode(txt.substr(i, term.length)));
+      frag.appendChild(m);
+      R.hits.push(m);
+      pos = i + term.length;
+      i = txt.toLowerCase().indexOf(low, pos);
+    }
+    frag.appendChild(document.createTextNode(txt.slice(pos)));
+    node.parentNode.replaceChild(frag, node);
+  });
+  if(!R.hits.length){ $('rcount').textContent = 'not found'; return; }
+  R.at = -1; jumpMark();
+}
+
+function jumpMark(){
+  if(!R.hits.length) return;
+  if(R.at >= 0 && R.hits[R.at]) R.hits[R.at].classList.remove('on');
+  R.at = (R.at + 1) % R.hits.length;
+  var m = R.hits[R.at];
+  m.classList.add('on');
+  m.scrollIntoView({ block:'center' });
+  $('rcount').textContent = (R.at + 1) + ' of ' + R.hits.length;
+}
+
+var searchTimer;
+$('rsearch').oninput = function(){ clearTimeout(searchTimer); searchTimer = setTimeout(runSearch, 220); };
+$('rsearch').onkeydown = function(e){
+  if(e.key === 'Enter'){ e.preventDefault(); if(R.hits.length) jumpMark(); else runSearch(); }
+};
+$('rnext').onclick = jumpMark;
+
 $('begin').onclick = function(){
   var code = $('code').value.trim(), who = $('who').value.trim(), mail = $('whomail').value.trim();
   if(!who){ $('gate-err').textContent = 'Please add your name.'; return; }
@@ -188,6 +313,7 @@ $('begin').onclick = function(){
     if(!r || !r.ok){ $('gate-err').textContent = (r && r.error) || 'Could not start. Try again.';
       $('begin').disabled = false; $('begin').textContent = 'Begin'; return; }
     S.token = r.token; S.data = r; S.total = r.limit; S.deadline = Date.now() + r.limit*1000;
+    if(r.manual) mountReading(r.manual);
     $('clockwrap').classList.remove('hid'); $('bar').classList.remove('hid');
     buildAll(); show('s-1'); tick();
   });
@@ -270,6 +396,7 @@ function collect(){
 
 function send(){
   if(S.sent) return; S.sent = true; S.deadline = 0;
+  wipeReading();
   $('clockwrap').classList.add('hid'); $('bar').classList.add('hid');
   post({ action:'submit', token:S.token, answers:collect() }, function(r){
     if(r && r.ok && r.cleared){ show('s-cleared'); return; }
