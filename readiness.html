@@ -88,7 +88,17 @@ display:flex;flex-direction:column;z-index:50;transform:translateX(102%);transit
 #rbody th,#rbody td{border:1px solid rgba(10,18,32,.18);padding:6px 8px;text-align:left;}
 #rbody mark{background:var(--gold);color:var(--nblk);}
 #rbody mark.on{outline:2px solid var(--nblk);}
+#rparts{display:flex;flex-wrap:wrap;gap:5px;padding:9px 18px;border-bottom:1px solid rgba(10,18,32,.12);}
+#rparts button{font-family:var(--sans);font-size:11px;letter-spacing:.04em;padding:4px 9px;border:1px solid rgba(10,18,32,.22);
+background:#fff;border-radius:2px;cursor:pointer;color:var(--nblk);min-width:26px;}
+#rparts button:hover{background:var(--nblk);color:var(--gold);border-color:var(--nblk);}
 @media(max-width:600px){#reader{width:100vw;}#readbtn{margin-left:8px;padding:5px 8px;letter-spacing:.08em;}}
+/* On a wide screen the page steps aside rather than being covered, so the
+   question and the manual are both readable at once. */
+@media(min-width:1400px){
+  main{transition:margin-left .22s ease;}
+  html.reading main{margin-left:max(24px, calc((100vw - 560px - 760px) / 2));margin-right:auto;}
+}
 </style>
 </head><body>
 <header>
@@ -106,6 +116,7 @@ display:flex;flex-direction:column;z-index:50;transform:translateX(102%);transit
     <span id="rcount"></span>
     <button id="rnext" type="button">Next</button>
   </div>
+  <div id="rparts"></div>
   <div id="rbody"></div>
 </aside>
 
@@ -222,27 +233,66 @@ function post(body, cb){
    The manual arrives with the attempt, lives in the page for the forty minutes,
    and is destroyed on submission. It is never written to storage of any kind and
    the candidate is never given its own address. */
-var R = { hits:[], at:-1 };
+var R = { hits:[], at:-1, scroll:0 };
 
 function mountReading(html){
   $('rbody').innerHTML = html;
+  buildParts();
   $('reader').classList.remove('hid');
   $('readbtn').classList.remove('hid');
 }
 
+/* One tap per part, built from the manual's own headings rather than a hard-coded
+   list, so it stays right if the manual gains or loses a part. */
+function buildParts(){
+  var wrap = $('rparts');
+  wrap.innerHTML = '';
+  var top = document.createElement('button');
+  top.type = 'button';
+  top.textContent = 'Top';
+  top.title = 'Back to the beginning';
+  top.onclick = function(){ $('rbody').scrollTop = 0; };
+  wrap.appendChild(top);
+  [].forEach.call($('rbody').querySelectorAll('h1'), function(h){
+    var t = (h.textContent || '').trim();
+    var m = t.match(/^Part\s+(\d+)/i);
+    if(!m) return;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = m[1];
+    b.title = t;
+    b.onclick = function(){ h.scrollIntoView({ block:'start' }); };
+    wrap.appendChild(b);
+  });
+}
+
 function wipeReading(){
   if($('rbody')) $('rbody').innerHTML = '';
+  if($('rparts')) $('rparts').innerHTML = '';
   if($('reader')){ $('reader').classList.remove('open'); $('reader').classList.add('hid'); }
   if($('readbtn')) $('readbtn').classList.add('hid');
-  R.hits = []; R.at = -1;
+  document.documentElement.classList.remove('reading');
+  R.hits = []; R.at = -1; R.scroll = 0;
   if(S.data) S.data.manual = null;
 }
 
+function openReader(){
+  $('reader').classList.add('open');
+  document.documentElement.classList.add('reading');
+  $('rbody').scrollTop = R.scroll;
+  $('rsearch').focus();
+}
+
+function closeReader(){
+  R.scroll = $('rbody').scrollTop;
+  $('reader').classList.remove('open');
+  document.documentElement.classList.remove('reading');
+}
+
 $('readbtn').onclick = function(){
-  var open = $('reader').classList.toggle('open');
-  if(open) $('rsearch').focus();
+  if($('reader').classList.contains('open')) closeReader(); else openReader();
 };
-$('rclose').onclick = function(){ $('reader').classList.remove('open'); };
+$('rclose').onclick = closeReader;
 
 function clearMarks(){
   var b = $('rbody');
