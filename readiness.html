@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="referrer" content="no-referrer">
+<title>Readiness interview</title>
+<link rel="icon" href="favicon.png">
+<style>
+@font-face{font-family:'FrauncesDisp';src:url(fonts/fraunces-disp.woff2) format('woff2');font-weight:100 900;font-display:swap;}
+@font-face{font-family:'Fraunces';src:url(fonts/fraunces-var.woff2) format('woff2');font-weight:100 900;font-display:swap;}
+@font-face{font-family:'Archivo';src:url(fonts/archivo-var.woff2) format('woff2');font-weight:100 900;font-display:swap;}
+:root{--nblk:#0A1220;--cream:#F1E9D6;--gold:#C7A24E;--goldink:#6F5624;--paper:#FAF7F0;
+--ink:#20242B;--slate:#5C6472;--rule:#E0D8C6;--warn:#8A3324;--ok:#1D5B3A;
+--serif:'Fraunces',Georgia,serif;--disp:'FrauncesDisp',Georgia,serif;--sans:'Archivo','Segoe UI',Arial,sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.6;}
+header{background:var(--nblk);color:var(--cream);padding:16px 0;position:sticky;top:0;z-index:5;}
+header .in{max-width:760px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.mark{font-family:var(--sans);font-weight:600;letter-spacing:.18em;font-size:11px;text-transform:uppercase;}
+#clockwrap{display:flex;align-items:baseline;gap:9px;}
+#clocklab{font-family:var(--sans);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#8C93A1;}
+#clock{font-family:var(--sans);font-size:22px;font-weight:600;letter-spacing:.02em;color:var(--gold);font-variant-numeric:tabular-nums;}
+#clock.low{color:#E8A07E;}
+#bar{height:3px;background:#1B2536;}
+#bar span{display:block;height:100%;width:100%;background:var(--gold);transition:width 1s linear;}
+#bar.low span{background:#E8A07E;}
+main{max-width:760px;margin:0 auto;padding:44px 24px 110px;}
+h1{font-family:var(--disp);font-weight:500;font-size:clamp(28px,5vw,40px);line-height:1.12;margin:0 0 18px;}
+h2{font-family:var(--disp);font-weight:500;font-size:26px;margin:0 0 6px;}
+.sec{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;}
+p{margin:0 0 15px;}
+.lead{color:var(--slate);}
+.q{border-top:1px solid var(--rule);padding:22px 0 4px;}
+.q p.t{font-weight:600;margin-bottom:10px;}
+.q p.hint{font-family:var(--sans);font-size:13px;color:var(--slate);margin:-4px 0 8px;}
+label.opt{display:block;font-family:var(--sans);font-size:15px;line-height:1.45;padding:9px 12px;margin-bottom:6px;
+border:1px solid var(--rule);border-radius:2px;cursor:pointer;background:#fff;}
+label.opt:hover{border-color:var(--gold);}
+label.opt input{margin-right:9px;}
+label.opt.sel{border-color:var(--goldink);background:#FDF6E3;}
+input[type=text],input[type=email],textarea{width:100%;font-family:var(--sans);font-size:15.5px;line-height:1.5;padding:10px 12px;
+border:1px solid var(--rule);border-radius:2px;background:#fff;color:var(--ink);}
+textarea{min-height:150px;resize:vertical;}
+input:focus,textarea:focus{outline:none;border-color:var(--goldink);}
+.count{font-family:var(--sans);font-size:12px;color:var(--slate);margin-top:5px;}
+.count.over{color:var(--warn);font-weight:600;}
+button{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+background:var(--nblk);color:var(--cream);border:0;padding:15px 30px;border-radius:2px;cursor:pointer;margin-top:26px;}
+button:disabled{opacity:.4;cursor:not-allowed;}
+.box{background:#fff;border:1px solid var(--rule);border-left:3px solid var(--gold);padding:16px 18px;margin:0 0 18px;
+font-family:var(--sans);font-size:15px;line-height:1.55;}
+.warn-box{background:#FDF1EC;border:1px solid #D9A78F;border-left:3px solid var(--warn);padding:16px 18px;margin:0 0 18px;
+font-family:var(--sans);font-size:15px;line-height:1.55;color:#5A2A1C;}
+.warn-box strong{display:block;margin-bottom:4px;color:var(--warn);}
+.box strong{display:block;margin-bottom:4px;}
+.box ul,.warn-box ol{margin:8px 0 0 18px;}
+.box li,.warn-box li{margin-bottom:5px;}
+.err{color:var(--warn);font-family:var(--sans);font-size:14px;margin-top:12px;}
+.lbl{font-family:var(--sans);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);}
+.tag{display:inline-block;font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+border:1px solid currentColor;border-radius:2px;padding:4px 10px;margin-bottom:14px;}
+.tag.ok{color:var(--ok);} .tag.hold{color:var(--slate);}
+.hid{display:none !important;}
+@media(max-width:600px){body{font-size:16px;}main{padding:30px 18px 90px;}}
+</style>
+</head><body>
+<header>
+  <div class="in"><span class="mark">Ethan Starke</span>
+    <span id="clockwrap" class="hid"><span id="clocklab">Time remaining</span><span id="clock"></span></span>
+  </div>
+  <div id="bar" class="hid"><span></span></div>
+</header>
+<main>
+
+<section id="s-gate">
+  <div class="sec">Readiness interview</div>
+  <h1>Before you begin</h1>
+
+  <p class="lead">This is the second of the two written interviews, and the last one. It is an exam on <em>The Practice, Explained</em> and on the Commercial Annex that travels with it. Everything it asks is in those two documents.</p>
+
+  <div class="warn-box">
+    <strong>Forty minutes, in one sitting.</strong>
+    The clock starts when you press Begin and keeps running whether this page is open or not. Start when you know you will not be interrupted.
+  </div>
+
+  <div class="box">
+    <strong>How it works</strong>
+    <ul>
+      <li>Thirty-five points across seven sections, taken in order. You need thirty-two.</li>
+      <li>You may have the manual open. Most of this asks what you would <em>do</em> rather than what a page says, so looking things up costs time you will want.</li>
+      <li>The last section asks you to write two things. Write as you would to a buyer.</li>
+      <li>If you do not clear it, you may sit it again on a fresh set of questions after twenty-four hours.</li>
+    </ul>
+  </div>
+
+  <div class="warn-box">
+    <strong>Two things end the attempt on their own, whatever your score.</strong>
+    They are on the short list in Part 9 of the manual, and they are written here so that nothing on this test is a surprise:
+    <ol>
+      <li>Guaranteeing an outcome to a buyer.</li>
+      <li>Revealing a client &mdash; naming one, telling their story, or turning an appearance into an engagement.</li>
+    </ol>
+    Both are obligations the practice has signed. Everything else on that list costs points and nothing more.
+  </div>
+
+  <p><label for="who" class="lbl">Your full name</label></p>
+  <input type="text" id="who" autocomplete="name" spellcheck="false" placeholder="">
+
+  <p><label for="whomail" class="lbl">The email address you applied with</label></p>
+  <input type="email" id="whomail" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="">
+
+  <p><label for="code" class="lbl">Access code</label></p>
+  <input type="text" id="code" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="">
+  <p style="font-family:var(--sans);font-size:14px;color:var(--slate);margin-top:-4px;">From your invitation. Capitals do not matter.</p>
+  <div id="gate-err" class="err"></div>
+  <button id="begin">Begin</button>
+</section>
+
+<section id="s-1" class="hid"></section>
+<section id="s-2" class="hid"></section>
+<section id="s-3" class="hid"></section>
+<section id="s-4" class="hid"></section>
+<section id="s-5" class="hid"></section>
+<section id="s-6" class="hid"></section>
+<section id="s-7" class="hid"></section>
+
+<section id="s-cleared" class="hid">
+  <span class="tag ok">Cleared</span>
+  <h1>Thank you. That is the last written stage.</h1>
+  <p class="lead">Ethan will be in touch to arrange a short call with him directly. Nothing further is needed from you in the meantime.</p>
+  <p class="lead">You may close this page.</p>
+</section>
+
+<section id="s-held" class="hid">
+  <span class="tag hold">Not yet</span>
+  <h1>Thank you.</h1>
+  <p class="lead">Two areas are worth another pass before you go further: <strong id="weak"></strong>. Go back to those parts of the manual and sit this again whenever you like, on a fresh set of questions. You can start again after twenty-four hours, using the same link and code.</p>
+  <p class="lead">You may close this page.</p>
+</section>
+
+</main>
+<script>
+var ENDPOINT = 'https://script.google.com/macros/s/AKfycbxyvKEzIOWVpzSHOnlCG3WR9LFmGlkcpxcVI3baH99di6hWaR0OwuWDXopBanbuB8k/exec';
+var IDS = ['s-gate','s-1','s-2','s-3','s-4','s-5','s-6','s-7','s-cleared','s-held'];
+var TITLES = {
+  1:['The practice and the person','Parts 1, 2 and 3. One answer each.'],
+  2:['Territories and formats','Parts 4 and 5. One answer each.'],
+  3:['Money','Part 7. Quote accurately or not at all.'],
+  4:['The lines that do not move','Part 9. Two of these end the attempt; you were told which before you began.'],
+  5:['Holding the number','The Commercial Annex. Two of these take more than one answer.'],
+  6:['Running a deal, and walking away','Parts 11 and 13.'],
+  7:['Two things to write','Composed, not looked up.']
+};
+var S = { token:null, data:null, deadline:0, total:2400, sent:false };
+var $ = function(id){ return document.getElementById(id); };
+var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+function show(id){ IDS.forEach(function(x){ $(x).classList.add('hid'); }); $(id).classList.remove('hid'); window.scrollTo(0,0); }
+
+function tick(){
+  if(!S.deadline) return;
+  var left = Math.max(0, Math.round((S.deadline - Date.now())/1000));
+  var m = Math.floor(left/60), s = left%60;
+  $('clock').textContent = m + ':' + (s<10?'0':'') + s;
+  var low = left < 300;
+  $('clock').className = low ? 'low' : '';
+  $('bar').className = low ? 'low' : '';
+  $('bar').firstElementChild.style.width = (left / S.total * 100) + '%';
+  $('clocklab').textContent = left < 60 ? 'Finishing up' : 'Time remaining';
+  if(left <= 0 && !S.sent){ send(); }
+}
+setInterval(tick, 1000);
+
+function post(body, cb){
+  fetch(ENDPOINT, { method:'POST', body: JSON.stringify(body) })
+    .then(function(x){ return x.json(); }).then(cb)
+    .catch(function(){ cb({ ok:false, error:'Network problem. Check your connection and try again.' }); });
+}
+
+$('begin').onclick = function(){
+  var code = $('code').value.trim(), who = $('who').value.trim(), mail = $('whomail').value.trim();
+  if(!who){ $('gate-err').textContent = 'Please add your name.'; return; }
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){ $('gate-err').textContent = 'Please add the email address you applied with.'; return; }
+  if(!code){ $('gate-err').textContent = 'Please add the access code from your invitation.'; return; }
+  this.disabled = true; this.textContent = 'Checking';
+  post({ action:'start', code:code, name:who, email:mail }, function(r){
+    if(!r || !r.ok){ $('gate-err').textContent = (r && r.error) || 'Could not start. Try again.';
+      $('begin').disabled = false; $('begin').textContent = 'Begin'; return; }
+    S.token = r.token; S.data = r; S.total = r.limit; S.deadline = Date.now() + r.limit*1000;
+    $('clockwrap').classList.remove('hid'); $('bar').classList.remove('hid');
+    buildAll(); show('s-1'); tick();
+  });
+};
+
+function nav(next, label){
+  var b = document.createElement('button');
+  b.textContent = label || 'Continue';
+  b.onclick = function(){ show(next); };
+  return b;
+}
+
+function items(list){
+  return list.map(function(q){
+    var type = q.multi ? 'checkbox' : 'radio';
+    return '<div class="q"><p class="t">' + esc(q.q) + '</p>' +
+      (q.multi ? '<p class="hint">Select all that apply.</p>' : '') +
+      q.o.map(function(o,i){
+        return '<label class="opt"><input type="' + type + '" name="' + q.id + '" value="' + i + '">' + esc(o) + '</label>';
+      }).join('') + '</div>';
+  }).join('');
+}
+
+function buildAll(){
+  var d = S.data;
+  [1,2,3,4,5,6].forEach(function(n){
+    var el = $('s-' + n);
+    el.innerHTML = '<div class="sec">Section ' + n + ' of 7</div><h2>' + TITLES[n][0] + '</h2>' +
+      '<p class="lead">' + TITLES[n][1] + '</p>' + items(d['s' + n]);
+    el.appendChild(nav('s-' + (n + 1)));
+  });
+
+  $('s-7').innerHTML = '<div class="sec">Section 7 of 7</div><h2>' + TITLES[7][0] + '</h2>' +
+    '<p class="lead">' + TITLES[7][1] + '</p>' +
+    '<div class="q"><p class="t">Hold the number</p>' +
+      '<div class="box">' + esc(d.s7.hold.brief) + '</div>' +
+      '<p>' + esc(d.s7.hold.ask) + '</p>' +
+      '<textarea data-k="hold" id="ta-hold"></textarea><div class="count" id="c-hold">0 of 150 words</div></div>' +
+    '<div class="q"><p class="t">The roster wording</p>' +
+      '<p>' + esc(d.s7.roster.ask) + '</p>' +
+      '<textarea data-k="roster" id="ta-roster" style="min-height:90px"></textarea></div>';
+  var sub = document.createElement('button');
+  sub.textContent = 'Submit';
+  sub.onclick = function(){ sub.disabled = true; sub.textContent = 'Sending'; send(); };
+  $('s-7').appendChild(sub);
+  counter('ta-hold','c-hold',150);
+}
+
+document.addEventListener('change', function(ev){
+  var t = ev.target;
+  if(t.type !== 'radio' && t.type !== 'checkbox') return;
+  if(t.type === 'radio'){
+    [].forEach.call(document.getElementsByName(t.name), function(r){ r.closest('label').classList.remove('sel'); });
+    t.closest('label').classList.add('sel');
+  } else {
+    t.closest('label').classList.toggle('sel', t.checked);
+  }
+});
+
+function counter(taId, cId, max){
+  var ta = $(taId), c = $(cId);
+  ta.addEventListener('input', function(){
+    var n = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0;
+    c.textContent = n + ' of ' + max + ' words';
+    c.className = n > max ? 'count over' : 'count';
+  });
+}
+
+function collect(){
+  var out = {};
+  [].forEach.call(document.querySelectorAll('[data-k]'), function(el){ out[el.dataset.k] = el.value; });
+  [].forEach.call(document.querySelectorAll('input[type=radio]:checked'), function(r){ out[r.name] = r.value; });
+  var seen = {};
+  [].forEach.call(document.querySelectorAll('input[type=checkbox]'), function(c){
+    if(!seen[c.name]){ seen[c.name] = []; out[c.name] = seen[c.name]; }
+    if(c.checked) seen[c.name].push(Number(c.value));
+  });
+  return out;
+}
+
+function send(){
+  if(S.sent) return; S.sent = true; S.deadline = 0;
+  $('clockwrap').classList.add('hid'); $('bar').classList.add('hid');
+  post({ action:'submit', token:S.token, answers:collect() }, function(r){
+    if(r && r.ok && r.cleared){ show('s-cleared'); return; }
+    if(r && r.ok && r.weakest && r.weakest.length){ $('weak').textContent = r.weakest.join(' and '); }
+    else { $('weak').textContent = 'Money and The lines that do not move'; }
+    show('s-held');
+  });
+}
+window.addEventListener('beforeunload', function(e){ if(S.token && !S.sent){ e.preventDefault(); e.returnValue = ''; } });
+</script>
+</body></html>
