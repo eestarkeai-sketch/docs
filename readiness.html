@@ -115,33 +115,33 @@ display:flex;flex-direction:column;z-index:50;transform:translateX(102%);transit
   <div class="sec">Readiness interview</div>
   <h1>Before you begin</h1>
 
-  <p class="lead">This is the second of the two written interviews, and the last one. It is an <strong>open-book</strong> exam on <em>The Practice, Explained</em>, the manual this practice runs on. You are not expected to have read it before today.</p>
+  <p class="lead">This is the second of the two written interviews, and the last one. It is open book. The manual this practice runs on, <em>The Practice, Explained</em>, sits on this page while you work, and nobody expects you to have read it before today.</p>
 
-  <p class="lead">The manual is on this page while you sit the interview. Open it with <strong>The manual</strong> at the top of the screen, and search it. Everything the interview asks is in it. It is here for the forty minutes and not afterwards: it closes when you submit, and it is not yours to keep or to pass on.</p>
+  <p class="lead">Open it with <strong>The manual</strong> at the top of the screen, and search it as much as you like. Everything here is answerable from it. It stays for the forty minutes and closes when you submit, so it is not yours to keep or to pass on.</p>
 
   <div class="warn-box">
     <strong>Forty minutes, in one sitting.</strong>
-    The clock starts when you press Begin and keeps running whether this page is open or not. Start when you know you will not be interrupted.
+    The clock starts when you press Begin and keeps running whether this page is open or not. Pick a moment when nobody is going to need you.
   </div>
 
   <div class="box">
     <strong>How it works</strong>
     <ul>
-      <li>Thirty-five points across seven sections, taken in order. You need thirty-two.</li>
-      <li>You may have the manual open. Most of this asks what you would <em>do</em> rather than what a page says, so looking things up costs time you will want.</li>
-      <li>The last section asks you to write two things. Write as you would to a buyer.</li>
-      <li>If you do not clear it, you may sit it again on a fresh set of questions after twenty-four hours.</li>
+      <li>Thirty-five points across seven sections, taken in order. Twenty-eight clears it.</li>
+      <li>Most of this asks what you would <em>do</em> rather than what a page says. The manual helps most when you already half know the answer and want to be sure.</li>
+      <li>The last section asks you to write two things. Write them the way you would write to a buyer. Nobody is marking your prose style.</li>
+      <li>If it does not go your way, you can sit it again after twenty-four hours on a fresh set of questions. That is not a black mark.</li>
     </ul>
   </div>
 
   <div class="warn-box">
     <strong>Two things end the attempt on their own, whatever your score.</strong>
-    They are on the short list in Part 9 of the manual, and they are written here so that nothing on this test is a surprise:
+    They are on the short list in Part 9, and they are written out here so that nothing today comes as a surprise:
     <ol>
       <li>Guaranteeing an outcome to a buyer.</li>
-      <li>Revealing a client &mdash; naming one, telling their story, or turning an appearance into an engagement.</li>
+      <li>Revealing a client, which means naming one, telling their story, or turning an appearance into an engagement.</li>
     </ol>
-    Both are obligations the practice has signed. Everything else on that list costs points and nothing more.
+    These two are promises the practice has actually signed, which is why they are absolute rather than expensive. Everything else on that list costs a point and no more.
   </div>
 
   <p><label for="who" class="lbl">Your full name</label></p>
@@ -167,15 +167,15 @@ display:flex;flex-direction:column;z-index:50;transform:translateX(102%);transit
 
 <section id="s-cleared" class="hid">
   <span class="tag ok">Cleared</span>
-  <h1>Thank you. That is the last written stage.</h1>
-  <p class="lead">Ethan will be in touch to arrange a short call with him directly. Nothing further is needed from you in the meantime.</p>
+  <h1>That is the last written stage. Nicely done.</h1>
+  <p class="lead">Ethan will be in touch to arrange a short call with him directly. Nothing else is needed from you in the meantime, so you can put this down.</p>
   <p class="lead">You may close this page.</p>
 </section>
 
 <section id="s-held" class="hid">
   <span class="tag hold">Not yet</span>
-  <h1>Thank you.</h1>
-  <p class="lead">Two areas are worth another pass before you go further: <strong id="weak"></strong>. The manual will be open to you again when you sit it. You can start again after twenty-four hours, using the same link and code, on a fresh set of questions.</p>
+  <h1>Not this time. Thank you for sitting it.</h1>
+  <p class="lead">Two areas are worth another look before you go again: <strong id="weak"></strong>. The manual will be open to you exactly as it was. You can start again after twenty-four hours with the same link and code, on a fresh set of questions, and people do clear it on a second run.</p>
   <p class="lead">You may close this page.</p>
 </section>
 
@@ -186,11 +186,11 @@ var IDS = ['s-gate','s-1','s-2','s-3','s-4','s-5','s-6','s-7','s-cleared','s-hel
 var TITLES = {
   1:['The practice and the person','Parts 1, 2 and 3. One answer each.'],
   2:['Territories and formats','Parts 4 and 5. One answer each.'],
-  3:['Money','Part 7. Quote accurately or not at all.'],
-  4:['The lines that do not move','Part 9. Two of these end the attempt; you were told which before you began.'],
+  3:['Money','Part 7 has the table. Worth opening it rather than guessing.'],
+  4:['The lines that do not move','Part 9. Two of these end the attempt, and you were told which before you began.'],
   5:['Holding the number','Parts 9, 10 and 12. One answer each.'],
   6:['Running a deal, and walking away','Parts 11 and 13.'],
-  7:['Two things to write','Composed, not looked up.']
+  7:['Two things to write','In your own words. Take the time you have left.']
 };
 var S = { token:null, data:null, deadline:0, total:2400, sent:false };
 var $ = function(id){ return document.getElementById(id); };
