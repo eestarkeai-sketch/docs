@@ -78,7 +78,7 @@ font-family:var(--sans);font-size:15px;line-height:1.55;color:#5A2A1C;}
 
   <div class="warn-box">
     <strong>Give yourself one clear half hour.</strong>
-    This runs in a single sitting. You have twenty-five minutes from the moment you press Begin, and the clock keeps running whether this page is open or not, so it is worth starting when you know you will not be interrupted. Come back and press Begin when you are ready.
+    This runs in a single sitting. You have thirty minutes from the moment you press Begin, and the clock keeps running whether this page is open or not, so it is worth starting when you know you will not be interrupted. Come back and press Begin when you are ready.
   </div>
 
   <div class="box">
@@ -186,7 +186,8 @@ function buildAll(){
   a.innerHTML = '<div class="sec">Section A of F</div><h2>Your track record</h2>' +
     '<p class="lead">Be specific. Anything vague here is read as nothing. Everything you write can be checked in a ten minute call, so write only what you can stand behind.</p>' +
     d.a.map(function(q){ return '<div class="q"><p class="t">' + esc(q.label) + '</p>' +
-      '<input type="text" data-k="' + q.id + '" autocomplete="off"></div>'; }).join('');
+      (q.o ? q.o.map(function(o,i){ return '<label class="opt"><input type="radio" name="' + q.id + '" value="' + i + '">' + esc(o) + '</label>'; }).join('')
+           : '<input type="text" data-k="' + q.id + '" autocomplete="off">') + '</div>'; }).join('');
   a.appendChild(nav('s-b'));
 
   $('s-b').innerHTML = '<div class="sec">Section B of F</div><h2>The market</h2>' +
