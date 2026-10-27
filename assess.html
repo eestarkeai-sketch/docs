@@ -125,14 +125,22 @@ font-family:var(--sans);font-size:15px;line-height:1.55;color:#5A2A1C;}
   <p class="lead">You may close this page.</p>
 </section>
 
+<section id="s-fail" class="hid">
+  <div class="sec">Not sent yet</div>
+  <h1>Your answers have not reached the office.</h1>
+  <p class="lead" id="fail-msg"></p>
+  <p class="lead">Nothing is lost. Your answers are still held on this page and in this browser. Check your connection and press Send again. If it still will not go, reply to the email that brought you here and the office will sort it out.</p>
+  <button id="resend">Send again</button>
+</section>
+
 </main>
 <script>
 var ENDPOINT = 'https://script.google.com/macros/s/AKfycbySN-qGHPk1MLVhr2eW5-eKXyISVomYezuk9QJU8OFA9sSCSqKURUzqu7w4jfPQRuKMFA/exec';
-var S = { token:null, data:null, answers:{}, deadline:0, total:1500, sent:false };
+var S = { token:null, data:null, answers:{}, deadline:0, deadlineAt:0, total:1500, sent:false, done:false, at:'s-a' };
 var $ = function(id){ return document.getElementById(id); };
 var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
 
-function show(id){ ['s-gate','s-a','s-b','s-c','s-d','s-e','s-f','s-done'].forEach(function(x){ $(x).classList.add('hid'); });
+function show(id){ ['s-gate','s-a','s-b','s-c','s-d','s-e','s-f','s-done','s-fail'].forEach(function(x){ $(x).classList.add('hid'); });
   $(id).classList.remove('hid'); window.scrollTo(0,0); }
 
 function tick(){
@@ -160,9 +168,9 @@ $('begin').onclick = function(){
   post({ action:'start', code:code, name:who, email:mail }, function(r){
     if(!r || !r.ok){ $('gate-err').textContent = (r && r.error) || 'Could not start. Try again.';
       $('begin').disabled = false; $('begin').textContent = 'Begin'; return; }
-    S.token = r.token; S.data = r; S.total = r.limit; S.deadline = Date.now() + r.limit*1000;
+    S.token = r.token; S.data = r; S.total = r.limit; S.deadline = S.deadlineAt = Date.now() + r.limit*1000; S.at = 's-a';
     $('clockwrap').classList.remove('hid'); $('bar').classList.remove('hid');
-    buildAll(); show('s-a'); tick();
+    buildAll(); show('s-a'); tick(); keep();
   });
 };
 
@@ -175,7 +183,7 @@ function post(body, cb){
 function nav(next, label){
   var b = document.createElement('button');
   b.textContent = label || 'Continue';
-  b.onclick = function(){ show(next); };
+  b.onclick = function(){ S.at = next; show(next); checkpoint(); };
   return b;
 }
 
@@ -265,10 +273,66 @@ function collect(){
 }
 
 function send(){
-  if(S.sent) return; S.sent = true; S.deadline = 0;
+  if(S.sent || S.done) return; S.sent = true; S.deadline = 0;
   $('clockwrap').classList.add('hid'); $('bar').classList.add('hid');
-  post({ action:'submit', token:S.token, answers:collect() }, function(){ show('s-done'); });
+  var answers = collect(); keep();
+  post({ action:'submit', token:S.token, answers:answers }, function(r){
+    if(r && (r.ok || r.kept)){ S.done = true; forget(); show('s-done'); return; }
+    S.sent = false;
+    $('fail-msg').textContent = (r && r.error) || 'The connection dropped before your answers arrived.';
+    $('resend').disabled = false; $('resend').textContent = 'Send again';
+    show('s-fail');
+  });
 }
-window.addEventListener('beforeunload', function(e){ if(S.token && !S.sent){ e.preventDefault(); e.returnValue = ''; } });
+$('resend').onclick = function(){ this.disabled = true; this.textContent = 'Sending'; send(); };
+
+/* Answers are kept in this browser as they are typed and sent to the office at every section and every two
+   minutes, so a closed tab, a dropped connection or the clock running out can no longer lose an attempt. */
+var STORE = 'esa-attempt';
+function keep(){
+  if(!S.token || S.done) return;
+  try { localStorage.setItem(STORE, JSON.stringify({ token:S.token, data:S.data, total:S.total,
+    deadline:S.deadlineAt, answers:collect(), at:S.at })); } catch(e){}
+}
+function forget(){ try { localStorage.removeItem(STORE); } catch(e){} }
+function checkpoint(){
+  if(!S.token || S.sent || S.done) return;
+  keep();
+  post({ action:'progress', token:S.token, answers:collect() }, function(){});
+}
+var keepSoon = null;
+['input','change','click'].forEach(function(ev){
+  document.addEventListener(ev, function(){ clearTimeout(keepSoon); keepSoon = setTimeout(keep, 400); });
+});
+setInterval(checkpoint, 120000);
+document.addEventListener('visibilitychange', function(){
+  if(document.visibilityState !== 'hidden' || !S.token || S.sent || S.done) return;
+  keep();
+  try { navigator.sendBeacon(ENDPOINT, JSON.stringify({ action:'progress', token:S.token, answers:collect() })); } catch(e){}
+});
+function restore(a){
+  [].forEach.call(document.querySelectorAll('[data-k]'), function(el){
+    if(a[el.dataset.k] != null){ el.value = a[el.dataset.k]; el.dispatchEvent(new Event('input')); } });
+  Object.keys(a).forEach(function(k){
+    if(!/^\d+$/.test(String(a[k])) || !/^[\w-]+$/.test(k)) return;
+    var r = document.querySelector('input[type=radio][name="' + k + '"][value="' + a[k] + '"]');
+    if(r){ r.checked = true; r.closest('label').classList.add('sel'); }
+  });
+  (a.self || []).forEach(function(v, i){
+    var w = document.querySelectorAll('.scale')[i]; if(!w || !v) return;
+    var l = w.querySelector('label[data-v="' + v + '"]'); if(l) l.classList.add('sel');
+  });
+}
+(function resume(){
+  var s; try { s = JSON.parse(localStorage.getItem(STORE) || 'null'); } catch(e){ s = null; }
+  if(!s || !s.token || !s.data || !s.deadline) return;
+  S.token = s.token; S.data = s.data; S.total = s.total; S.deadlineAt = s.deadline; S.at = s.at || 's-a';
+  buildAll(); restore(s.answers || {});
+  if(Date.now() >= S.deadlineAt){ show('s-f'); send(); return; }
+  S.deadline = S.deadlineAt;
+  $('clockwrap').classList.remove('hid'); $('bar').classList.remove('hid');
+  show(S.at); tick();
+})();
+window.addEventListener('beforeunload', function(e){ if(S.token && !S.sent && !S.done){ keep(); e.preventDefault(); e.returnValue = ''; } });
 </script>
 </body></html>
